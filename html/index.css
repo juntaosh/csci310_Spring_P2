@@ -1,0 +1,127 @@
+#container{
+	background-color:snow;
+	width:1024px;
+	margin:auto;
+}
+#form input{
+	width: 600px;
+	height: 50px;
+	font-size: 30px;
+	line-height: 50px;
+	outline-color: purple;
+}
+
+#form canvas{
+	text-align: center;
+}
+h1 {
+    color: #800080;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: normal;
+    margin-left:400px;
+    margin-top:30px;
+}
+
+body{
+	font-family:Verdana,Microsoft YaHei,Geneva,sans-serif;
+	font-size:16px;
+	color:#595959;
+	background:snow;
+	height:600px;
+	font-weight:bold;
+}
+
+label{
+	width:220px;
+	margin-right:10px;
+	float:left;
+}
+	
+#main,.wrap{
+	width:1024px;
+	margin:0 auto;
+}
+#space{
+    height:4px;
+    width:1024px;
+    padding-top:40px;
+    margin:0 auto;
+}
+#search{
+    width:700px;
+    height:80px;
+    margin: 0 auto;
+    margin-bottom:30px;
+	line-height:30px;
+
+}
+#myProgress {
+    width: 700px;
+    background-color:#dcdcdc;
+	margin: 0 auto;
+}
+#myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #800080;
+}
+.input[type=text]{
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 0 auto;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-row {
+    width:700px;
+    margin: 0 auto;
+}
+.searchBtn{
+    width: 120px;
+    height: 26px;
+    border: 0;
+    margin-right:20px;
+	font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(#4d004d,#800080);
+    color: white;
+    font-size: 15px;
+    font-weight:bold;
+    border-radius: 5px;
+    float:right;
+    display: table-cell;
+    vertical-align: middle;
+}
+.downloadBtn{
+    width: 120px;
+    height: 40px;
+    border: 0;
+    margin-right:20px;
+	font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(#4d004d,#800080);
+    color: white;
+    font-size: 15px;
+	font-weight:bold;
+    border-radius: 5px;
+    float:right;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+button {
+    width: 120px;
+    height: 20px;
+    border: 0;
+    margin-right:20px;
+    background: linear-gradient(#4d004d,#800080);
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    float:right;
+}
