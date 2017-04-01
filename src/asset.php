@@ -4,7 +4,15 @@ function downloadFile($path, $url){
 	file_put_contents($path, fopen($url, 'r'));
 }
 
-function getPDFLinkFromHTML($html){
+function getPDFLinkFromHTML($url){
+	$ch = curl_init();
+	$timeout = 5;
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+	$html = curl_exec($ch);
+	curl_close($ch);
+
 	# Create a DOM parser object
 	$dom = new DOMDocument();
 
@@ -15,12 +23,13 @@ function getPDFLinkFromHTML($html){
 	$address= "";
 	# Iterate over all the <a> tags
 	foreach($dom->getElementsByTagName('a') as $link) {
-	    # Show the <a href>
 		$name = $link->getAttribute('name');
 		if($name ==	"FullTextPDF"){
 	 		$address = $link->getAttribute('href');
+	 		echo $address;
+		   	break;
 	   	}
-		return $address;
 	}
+	return $address;
 }
 ?>
