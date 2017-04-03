@@ -1,3 +1,4 @@
+var frequencyReturn=0;
 $(document).ready(function() {
     var data = location.search;
     data = data.replace('?', '');
@@ -18,6 +19,7 @@ function generateTable(data, word){
     var tbody = document.getElementById("myTableBody");
     console.log(data.articles);
     var Articles = data.articles;
+    frequencyReturn = 0;
     for(var i = 0; i < Articles.length; i++){
         var tr = document.createElement('tr');
 
@@ -37,7 +39,25 @@ function generateTable(data, word){
         tr.appendChild(Author);
         
         var Frequency = document.createElement('td');
-        Frequency.textContent = 16;
+        $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url:'wordFrequency.php',
+        async:false,
+        data:{
+            word: word,
+            path: Articles[i].Link
+        },
+        success: function(returned){
+            frequencyReturn = returned;
+        },
+        error: function(){
+            console.log("ERROR");
+        }
+        });
+
+        Frequency.textContent = frequencyReturn;
+        console.log(Frequency.textContent);
         tr.appendChild(Frequency);
 
         var Conference = document.createElement('td');
