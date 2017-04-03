@@ -27,7 +27,7 @@
             "behat/mink-selenium2-driver": "slow, but JS-enabled driver for any app (requires Selenium2)",
             "behat/mink-zombie-driver": "fast and JS-enabled headless driver for any app (requires node.js)"
         },
-        "time": "2016-03-05T08:26:18+00:00",
+        "time": "2016-03-05 08:26:18",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -80,7 +80,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-11-14T01:06:16+00:00",
+        "time": "2016-11-14 01:06:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -138,7 +138,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-10T12:19:37+00:00",
+        "time": "2016-10-10 12:19:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -191,7 +191,7 @@
         "require-dev": {
             "satooshi/php-coveralls": "dev-master"
         },
-        "time": "2015-06-15T20:19:33+00:00",
+        "time": "2015-06-15 20:19:33",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -252,7 +252,7 @@
         "require-dev": {
             "symfony/phpunit-bridge": "~2.7"
         },
-        "time": "2016-03-05T09:10:18+00:00",
+        "time": "2016-03-05 09:10:18",
         "type": "mink-driver",
         "extra": {
             "branch-alias": {
@@ -293,64 +293,6 @@
         ]
     },
     {
-        "name": "symfony/class-loader",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/class-loader.git",
-            "reference": "c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/class-loader/zipball/c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9",
-            "reference": "c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "symfony/finder": "~2.8|~3.0",
-            "symfony/polyfill-apcu": "~1.1"
-        },
-        "suggest": {
-            "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
-        },
-        "time": "2017-02-18T17:28:00+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\ClassLoader\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony ClassLoader Component",
-        "homepage": "https://symfony.com"
-    },
-    {
         "name": "psr/container",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -368,7 +310,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2017-02-14T16:28:37+00:00",
+        "time": "2017-02-14 16:28:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -419,7 +361,7 @@
         "require": {
             "psr/container": "^1.0"
         },
-        "time": "2017-02-14T19:40:03+00:00",
+        "time": "2017-02-14 19:40:03",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -452,7 +394,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2015-09-28T16:26:35+00:00",
+        "time": "2015-09-28 16:26:35",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -502,7 +444,7 @@
         "suggest": {
             "symfony/yaml": "If you want to parse features, represented in YAML files"
         },
-        "time": "2016-10-30T11:50:56+00:00",
+        "time": "2016-10-30 11:50:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -576,7 +518,7 @@
             "behat/symfony2-extension": "for integration with Symfony2 web framework",
             "behat/yii-extension": "for integration with Yii web framework"
         },
-        "time": "2016-12-25T13:43:52+00:00",
+        "time": "2016-12-25 13:43:52",
         "bin": [
             "bin/behat"
         ],
@@ -646,7 +588,7 @@
             "behat/mink-goutte-driver": "~1.1",
             "phpspec/phpspec": "~2.0"
         },
-        "time": "2016-02-15T07:55:18+00:00",
+        "time": "2016-02-15 07:55:18",
         "type": "behat-extension",
         "extra": {
             "branch-alias": {
@@ -684,8 +626,8 @@
     },
     {
         "name": "symfony/css-selector",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/css-selector.git",
@@ -700,7 +642,7 @@
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2017-02-21T09:12:04+00:00",
+        "time": "2017-02-21 09:12:04",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -738,9 +680,67 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "symfony/class-loader",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/class-loader.git",
+            "reference": "c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/class-loader/zipball/c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9",
+            "reference": "c29a5bc6ca14cfff1f5e3d7781ed74b6e898d2b9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "symfony/finder": "~2.8|~3.0",
+            "symfony/polyfill-apcu": "~1.1"
+        },
+        "suggest": {
+            "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
+        },
+        "time": "2017-02-18 17:28:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\ClassLoader\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony ClassLoader Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/filesystem",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/filesystem.git",
@@ -755,7 +755,7 @@
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2017-03-06T19:30:27+00:00",
+        "time": "2017-03-06 19:30:27",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -790,8 +790,8 @@
     },
     {
         "name": "symfony/config",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/config.git",
@@ -813,7 +813,7 @@
         "suggest": {
             "symfony/yaml": "To use the yaml reference dumper"
         },
-        "time": "2017-03-01T18:18:25+00:00",
+        "time": "2017-03-01 18:18:25",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -848,8 +848,8 @@
     },
     {
         "name": "symfony/debug",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/debug.git",
@@ -872,7 +872,7 @@
             "symfony/class-loader": "~2.8|~3.0",
             "symfony/http-kernel": "~2.8|~3.0"
         },
-        "time": "2017-02-18T17:28:00+00:00",
+        "time": "2017-02-18 17:28:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -907,8 +907,8 @@
     },
     {
         "name": "symfony/console",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/console.git",
@@ -937,7 +937,7 @@
             "symfony/filesystem": "",
             "symfony/process": ""
         },
-        "time": "2017-03-06T19:30:27+00:00",
+        "time": "2017-03-06 19:30:27",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -972,8 +972,8 @@
     },
     {
         "name": "symfony/dependency-injection",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/dependency-injection.git",
@@ -1002,7 +1002,7 @@
             "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
             "symfony/yaml": ""
         },
-        "time": "2017-03-05T00:06:55+00:00",
+        "time": "2017-03-05 00:06:55",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1037,8 +1037,8 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1064,7 +1064,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2017-02-21T09:12:04+00:00",
+        "time": "2017-02-21 09:12:04",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1099,8 +1099,8 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
@@ -1130,7 +1130,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2017-03-04T12:23:14+00:00",
+        "time": "2017-03-04 12:23:14",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1165,8 +1165,8 @@
     },
     {
         "name": "symfony/yaml",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/yaml.git",
@@ -1187,7 +1187,7 @@
         "suggest": {
             "symfony/console": "For validating YAML files using the lint command"
         },
-        "time": "2017-03-07T16:47:02+00:00",
+        "time": "2017-03-07 16:47:02",
         "type": "library",
         "extra": {
             "branch-alias": {

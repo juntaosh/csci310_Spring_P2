@@ -2,7 +2,7 @@
 default:
   extensions:
     Behat\MinkExtension:
-      base_url: 'http://localhost'
+      base_url: 'http://localhost/Project2/p2search'
       browser_name: 'firefox'
       selenium2:
         wd_host: "http://127.0.0.1:4444/wd/hub"
