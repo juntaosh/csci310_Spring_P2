@@ -7,9 +7,8 @@ Feature: list_Page
 
 	@javascript
 	Scenario: Access previous searches
-	Given I am on homePage
-	And I 
-	And I fill in "???" for "artistSearch"
+	When I am on homepage
+	And I fill in "charlie" for "searchWord"
 	And I press "Search"
 	And I should see a "canvas" element
 	When I press "word"
@@ -18,8 +17,8 @@ Feature: list_Page
 
 	@javascript
 	Scenario: Page ranked by frequency in paper
-	Given I am on homePage
-	And I fill in "???" for "artistSearch"
+	When I am on homepage
+	And I fill in "charlie" for "searchWord"
 	And I press "Search"
 	When I press "word"
 	Then I am on a list_page
@@ -28,8 +27,8 @@ Feature: list_Page
 
 	@javascript
 	Scenario: Show title author conference frequency and download links
-	Given I am on homePage
-	And I fill in "???" for "artistSearch"
+	When I am on homepage
+	And I fill in "charlie" for "searchWord"
 	And I press "Search"
 	When I press "word"
 	Then I am on a list_page
@@ -39,8 +38,8 @@ Feature: list_Page
 
 	@javascript
 	Scenario: Click on the column header for any of the four should allow sorting
-	Given I am on homePage
-	And I fill in "???" for "artistSearch"
+	When I am on homepage
+	And I fill in "charlie" for "searchWord"
 	And I press "Search"
 	When I press "word"
 	Then I am on a list_page

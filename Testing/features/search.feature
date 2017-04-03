@@ -8,7 +8,6 @@ Feature: homepage
 	@javascript
 	Scenario: Load word cloud at local host
 	When I am on homepage
-	And I wait "2"
 	And I should see "WordCloud"
 	And I should see "Search"
 	Then I should not see "Download Word Cloud"
@@ -16,7 +15,6 @@ Feature: homepage
 	@javascript
 	Scenario: Word cloud loaded and should give feed back after search
 	When I am on homepage
-	And I wait "2"
 	And I should see "WordCloud"
 	And I fill in "???" for "searchWord"
 	And I press "Search"
@@ -26,7 +24,6 @@ Feature: homepage
 	@javascript
 	Scenario: Search is usable
 	When I am on homepage
-	And I wait "2"
 	And I fill in "???" for "searchWord"
 	When I fill in "???" for "searchWord"
 	And I press "Search"
@@ -35,7 +32,6 @@ Feature: homepage
 	@javascript
 	Scenario: number of pages searched is configurable
 	When I am on homepage
-	And I wait "2"
 	And I fill in "???" for "searchWord"
 	And I fill in "???" for "numberofpaper"
 	And I press "Search"
