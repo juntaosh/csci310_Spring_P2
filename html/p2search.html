@@ -5,10 +5,10 @@
     <title>Word Cloud</title>
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2 bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js"></script>
 	<script src="./src/wordcloud2.js"></script>
 	<script src="./index.js"></script>
-	<script src="./request.js"></script>
+	<script src="./search.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
@@ -25,7 +25,7 @@
 			<label>Number of Paper</label><input id="numberofpaper">
 		</div>
 			<br>
-			<button class="searchBtn"id="searchbtn"onclick="hideButton(false);">Search</button>
+			<button class="searchBtn"id="searchbtn"onclick="hideButton(false);search()">Search</button>
 		</section>
 
 		<div id="myProgress">
