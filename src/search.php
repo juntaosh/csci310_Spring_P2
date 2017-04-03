@@ -5,8 +5,9 @@
 	require 'frequencySort.php';
 	// Get word from client side javascript
 	$word = $_POST['word'];
+	$paperNumber = $_POST['number'];
 	//echo "called";
-	$tmp = new Author($word);
+	$tmp = new Author($word,$paperNumber);
 	$tmp->getACMResponse();
 	$doiToLoc = $tmp->getACMPDF();
 	
