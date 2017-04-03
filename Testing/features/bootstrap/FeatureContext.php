@@ -28,41 +28,6 @@ class FeatureContext extends MinkContext implements Context
         sleep($arg1);
     }
 
-
-    /**
-     * @Then I should see background :arg1
-     */
-    public function iShouldSeeBackground($arg1)
-    {
-        return $this->getSession()->getPage()->find('css','background-color') === 'rgb(128,128,128)';
-    }
-
-    /**
-     * @Then I should see text :arg1
-     */
-    public function iShouldSeeText($arg1)
-    {
-        return $this->getSession()->getPage()->find('css','click_buttons') === 'rgb(0,0,0)';
-    }
-
-    /**
-     * @When I select Search bar
-     */
-    public function iSelectSearchBar()
-    {
-        $field = $this->fixStepArgument("artistSearch");
-        $value = $this->fixStepArgument(" ");
-        $this->getSession()->getPage()->fillField($field, $value);
-    }
-
-    /**
-     * @Then I should see purple border around the bar
-     */
-    public function iShouldSeePurpleBorderAroundTheBar()
-    {
-        return $this->getSession()->getPage()->find('css','input.outline-color') === 'rgb(128,0,128)';
-    }
-
     /**
      * @Then I should check size of :arg1
      */
@@ -81,14 +46,6 @@ class FeatureContext extends MinkContext implements Context
      * @Given I am on a list_page
      */
     public function iAmOnAListPage()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Given I am on homePage
-     */
-    public function iAmOnHomepage2()
     {
         throw new PendingException();
     }
