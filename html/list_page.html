@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <link href="index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="./css/jq.css" type="text/css" media="print, projection, screen" />
+<link rel="stylesheet" href="./css/blue/style.css" type="text/css" id="" media="print, projection, screen" />
+
+<script type="text/javascript" src="./jquery-latest.js"></script> 
+<script type="text/javascript" src="./jquery.tablesorter.js"></script>
+<script type="text/javascript" src="./list.js"></script>
+
 <head>
 <meta charset="utf-8">
 <title>Paper List</title>
@@ -8,27 +15,33 @@
 <body>
 <div id="container">
 	<div id="main">
-    	<h2 id="word">WordCloud</h2>
+    		<h2 id="word">WordCloud</h2>
 	</div>
 	<div id="main">
-	<table id="myTable">
-	  <tr>
-		<th></th>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Frequency</th>
-		<th>Conference</th>
-		<th>Download Link</th>
-	  </tr>
-	  <tr>
-		<td><input type="checkbox" id="Bike"></td>
-		<td>Jill</td>
-		<td>Smith</td>
-		<td>50</td>
-		<td>50</td>
-		<td>50</td>
-	  </tr>
-	</table> 
+		<table id="myTable">
+		<thead>
+		  <tr>
+			<th></th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Frequency</th>
+			<th>Conference</th>
+			<th>Download Link</th>
+		  </tr>
+		</thead>
+		<tbody id = "myTableBody">
+		  <tr>
+			<td><input type="checkbox" id="Bike"></td>
+			<td>Jill</td>
+			<td>Smith</td>
+			<td>50</td>
+			<td>50</td>
+			<td>50</td>
+		  </tr>
+		</tbody>
+		</table>
+		<button class="exportBtn"id="exporBtn">Export List</button>
+		<button class="exportBtn"id="generateBtn">Regenerate Cloud</button>
 	</div>
 </div>
 
