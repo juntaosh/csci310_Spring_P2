@@ -9,48 +9,53 @@ Feature: list_Page
 	Scenario: Access previous searches
 	When I am on homepage
 	And I fill in "charlie" for "searchWord"
+	And I fill in "3" for "numberofpaper"
 	And I press "Search"
-	And I should see a "canvas" element
-	When I press "word"
-	Then I am on a list_page
-	And I should see a "list" element
+	Then I should see "Word Cloud"
+	Then I wait "20"
+	When I press "students" in wordCloud
+	Then I wait "15"
+	Then I should see "39" 
 
 	@javascript
 	Scenario: Page ranked by frequency in paper
+	Scenario: Access previous searches
 	When I am on homepage
 	And I fill in "charlie" for "searchWord"
+	And I fill in "3" for "numberofpaper"
 	And I press "Search"
-	When I press "word"
-	Then I am on a list_page
-	And I should see a "table" element
+	Then I should see "Word Cloud"
+	Then I wait "20"
+	When I press "students" in wordCloud
+	Then I wait "15"
+	Then I should see "39" before "77"
 	
 
 	@javascript
 	Scenario: Show title author conference frequency and download links
 	When I am on homepage
 	And I fill in "charlie" for "searchWord"
+	And I fill in "3" for "numberofpaper"
 	And I press "Search"
-	When I press "word"
-	Then I am on a list_page
-	And I should see a "table" element
-	And I should see a link "???"
-	And I should see "Frequency"
+	Then I should see "Word Cloud"
+	Then I wait "20"
+	When I press "students" in wordCloud
+	Then I wait "15"
+	Then I should see "Download Link"
+	Then I should see "PDF"
+
 
 	@javascript
 	Scenario: Click on the column header for any of the four should allow sorting
 	When I am on homepage
 	And I fill in "charlie" for "searchWord"
+	And I fill in "3" for "numberofpaper"
 	And I press "Search"
-	When I press "word"
-	Then I am on a list_page
-	And I should see a "table" element
-	When I press "Title"
-	Then I should see column "Title"
-	When I press "Author"
-	Then I should see column "Author"
-	When I press "Frequency"
-	Then I should see column "Frequency"
-	When I press "Conference"
-	Then I should see column "Conference"
+	Then I should see "Word Cloud"
+	Then I wait "20"
+	When I press "students" in wordCloud
+	Then I wait "15"
+	And I press "Frequency" title
+	Then I should see "77" before "39"
 
 	

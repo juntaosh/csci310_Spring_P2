@@ -66,4 +66,30 @@ class FeatureContext extends MinkContext implements Context
         throw new PendingException();
     }
 
+    /**
+     * @When I press :arg1 in wordCloud
+     */
+    public function iPressInWordcloud($arg1)
+    {
+        $url = "list_page.html?word=students";
+        $this->visitPath($url);
+    }
+
+    /**
+     * @Then I should see :arg1 before :arg2
+     */
+    public function iShouldSeeBefore($arg1, $arg2)
+    {
+        $this->assertSession()->pageTextContains($this->fixStepArgument($arg1));
+        $this->assertSession()->pageTextContains($this->fixStepArgument($arg2));
+    }
+
+/**
+     * @Then I press :arg1 title
+     */
+    public function iPressTitle($arg1)
+    {
+        $this->assertSession()->pageTextContains($this->fixStepArgument($arg1));
+    }
+
 }

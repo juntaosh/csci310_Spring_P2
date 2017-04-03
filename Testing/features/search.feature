@@ -32,11 +32,12 @@ Feature: homepage
 	@javascript
 	Scenario: number of pages searched is configurable
 	When I am on homepage
-	And I fill in "???" for "searchWord"
-	And I fill in "???" for "numberofpaper"
+	And I fill in "charlie" for "searchWord"
+	And I fill in "3" for "numberofpaper"
 	And I press "Search"
 	Then I should see "Word Cloud"
-	When I press "Word"
-	Then I should see a "list" element 
-	And I should check size of "???"
+	Then I wait "20"
+	When I press "students" in wordCloud
+	Then I wait "15"
+	Then I should see "39" 
 
