@@ -68,6 +68,44 @@ class FeatureContext extends MinkContext implements Context
      */
     public function iShouldCheckSizeOf($arg1)
     {
+        $table = $this->getPage()->find('css', '.main-content table');
+        $row = $table->findall('css', 'tbody tr');
+        return count($row) < $arg1;
+    }
+
+    // public function iAmOnAListPage2()
+    // {
+    //     throw new PendingException();
+    // }
+    /**
+     * @Given I am on a list_page
+     */
+    public function iAmOnAListPage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given I am on homePage
+     */
+    public function iAmOnHomepage2()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see a link :arg1
+     */
+    public function iShouldSeeALink($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see column :arg1
+     */
+    public function iShouldSeeColumn($arg1)
+    {
         throw new PendingException();
     }
 

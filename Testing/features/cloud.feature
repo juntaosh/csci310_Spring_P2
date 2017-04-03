@@ -1,5 +1,5 @@
 # features/cloud.feature
-Feature: Word CLoud Page page
+Feature: list_Page
 	In order to see a word cloud
 	As a website user
 	I need to be able to use several features after the word cloud has
@@ -7,33 +7,50 @@ Feature: Word CLoud Page page
 
 	@javascript
 	Scenario: Access previous searches
-	Given I am on a homepage
+	Given I am on homePage
 	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	And I should see a "canvas" element
 	When I press "word"
-	Then I should see "list" element
+	Then I am on a list_page
+	And I should see a "list" element
 
 	@javascript
 	Scenario: Page ranked by frequency in paper
-	Given I am on a homepage
+	Given I am on homePage
 	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	When I press "word"
-	Then I 
+	Then I am on a list_page
+	And I should see a "table" element
+	
 
-	@jacascript
+	@javascript
 	Scenario: Show title author conference frequency and download links
-	Given I am on a homepage
+	Given I am on homePage
 	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	When I press "word"
+	Then I am on a list_page
+	And I should see a "table" element
+	And I should see a link "???"
+	And I should see "Frequency"
 
 	@javascript
 	Scenario: Click on the column header for any of the four should allow sorting
-	Given I am on a homepage
+	Given I am on homePage
 	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	When I press "word"
+	Then I am on a list_page
+	And I should see a "table" element
+	When I press "Title"
+	Then I should see column "Title"
+	When I press "Author"
+	Then I should see column "Author"
+	When I press "Frequency"
+	Then I should see column "Frequency"
+	When I press "Conference"
+	Then I should see column "Conference"
 
 	

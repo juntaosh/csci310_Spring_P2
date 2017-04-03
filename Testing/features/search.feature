@@ -37,5 +37,5 @@ Feature: homepage
 	Then I should see "Word Cloud"
 	When I press "Word"
 	Then I should see a "list" element 
-	And I should check size of "list"
+	And I should check size of "???"
 
