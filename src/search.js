@@ -1,18 +1,20 @@
-
-// Get All Albums by the artist id
+var returndata= [];
+// search
 function search(){
 	var searchword = document.getElementById("searchWord").value;
+	var paperNumber = document.getElementById("numberofpaper").value;
 	$.ajax({
 		type: 'POST',
 		dataType: 'json',
 		url:'search.php',
 		data:{
-			word: searchword
+			word: searchword,
+			number: paperNumber
 		},
-		//async:
 		success: function(returned){
 			console.log("success");
-			console.log(searchword);
+			console.log(returned);
+			returndata = returned;
 			var wordlist = [];
 			var length = returned.length > 250 ? 250 : returned.length;
 			for(var i = 0; i < length; i++){
@@ -34,6 +36,19 @@ function search(){
 
 }
 
+function storage(word){
+	console.log(returndata);
+	for(var i = 0; i < returndata.length; i++){
+		console.log(returndata[i].word);
+		if(returndata[i].word == word){
+			console.log(word);
+			console.log(returndata[i]);
+			var jsonObj = JSON.stringify(returndata[i]);
+			localStorage.setItem('wordData', jsonObj);
+			break;
+		}
+	}
+}
 
 // generateWordCloud by given wordlist[[word,value],[]...]
 function generateWordCloud(wordlist){
@@ -47,10 +62,12 @@ function generateWordCloud(wordlist){
 	options.color='#000000';
 	options.rotateRatio=0;
 	options.rotationSteps=1;
-	options.backgroundColor='#808080';
+	options.backgroundColor='Snow';
 	options.drawOufofBound=false;
 	options.click=function(item, dimension, event){
-		window.open("Song_list.html?word="+item[0] + "&artist_id=" + rId);
+		console.log(item[0]);
+		storage(item[0]);
+		window.open("list_page.html?word="+item[0]);
 	};
 	WordCloud(document.getElementById('mycanvas'), options);
 }

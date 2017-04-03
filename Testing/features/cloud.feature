@@ -8,6 +8,7 @@ Feature: list_Page
 	@javascript
 	Scenario: Access previous searches
 	Given I am on homePage
+	And I 
 	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	And I should see a "canvas" element

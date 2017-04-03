@@ -22,14 +22,16 @@ class Author {
 	// doi to localpath
 	private $doiToLoc = array();
 
-	function __construct($name) {
+	function __construct($name,$paperNumber) {
 		$this->client = new Client([
 		    'base_url' => ['http://api.crossref.org/'],
 		    'defaults' => [
 		        'query'   => ['format' => 'json']
 		    ]
 		]);
-		$requestStr = 'http://api.crossref.org/works?filter=member:320&rows=2&query=';
+		$requestStr = 'http://api.crossref.org/works?filter=member:320&rows=';
+		$requestStr = $requestStr . $paperNumber;
+		$requestStr = $requestStr . '&query=';
 		$requestStr = $requestStr . $name;
 		$this->ACMresponse = $this->client->request('GET', $requestStr);
 	}
@@ -69,6 +71,20 @@ class Author {
 		return $text->output();
 	}
 
+	public function getMetaData(){
+		$metaData = array();
+		foreach($this->doiarray as $article=>$doi){
+			$metaData[$article] = array(
+				"DOI"=>$doi,
+				"Title"=> $this->infoMap1[$doi]['title'],
+				"Author"=>$this->infoMap1[$doi]['author'],
+				"Conference"=>$this->infoMap2[$doi]['conference'],
+				"Link"=>$this->infoMap2[$doi]['pdf']
+			);
+		}
+		return $metaData;
+	}
+
 	public function getACMResponse(){
 		$data = $this->ACMresponse->getBody();
 		$data = json_decode($data, true);
@@ -77,8 +93,20 @@ class Author {
 			$doi = $item['DOI'];
 			$var = substr($doi, 8);
 			array_push($this->doiarray, $var);
-
-			//array_push($this->infoMap1, ["title" => $] );
+			$author = $item['author'];
+			$title = $item['title'];
+			$authorNames = $author[0]['given'] . " ";
+			$authorNames = $authorNames . $author[0]['family'];
+			if (count($author)>1){
+				foreach ($author as $number => $name){
+					if ($number !== 0){
+						$authorNames = $authorNames . ", ";
+						$authorNames = $author[$number]['given'] . " ";
+						$authorNames = $authorNames . $author[$number]['family'];
+					}
+				}
+			}
+			$this->infoMap1[$var] = array('title'=>$title[0],'author'=>$authorNames);
 		}
 	}
 }
