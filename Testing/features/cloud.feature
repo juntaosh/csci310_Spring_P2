@@ -8,9 +8,32 @@ Feature: Word CLoud Page page
 	@javascript
 	Scenario: Access previous searches
 	Given I am on a homepage
-	And I fill in "???" for "paperSearch"
+	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	And I should see a "canvas" element
 	When I press "word"
 	Then I should see "list" element
+
+	@javascript
+	Scenario: Page ranked by frequency in paper
+	Given I am on a homepage
+	And I fill in "???" for "artistSearch"
+	And I press "Search"
+	When I press "word"
+	Then I 
+
+	@jacascript
+	Scenario: Show title author conference frequency and download links
+	Given I am on a homepage
+	And I fill in "???" for "artistSearch"
+	And I press "Search"
+	When I press "word"
+
+	@javascript
+	Scenario: Click on the column header for any of the four should allow sorting
+	Given I am on a homepage
+	And I fill in "???" for "artistSearch"
+	And I press "Search"
+	When I press "word"
+
 	
