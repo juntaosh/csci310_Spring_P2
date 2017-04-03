@@ -20,12 +20,12 @@
 
 	<section id="search">
     		<div class="ui-widget">
-		    	<label>Key Word</label><input id="artistSearch" >
+		    	<label>Key Word</label><input id="searchWord" >
 				<br>
 			<label>Number of Paper</label><input id="numberofpaper">
 		</div>
 			<br>
-			<button class="searchBtn"id="searchbtn"onclick="hideButton(false);search()">Search</button>
+			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search()">Search</button>
 		</section>
 
 		<div id="myProgress">
@@ -64,7 +64,6 @@
 				document.getElementById("myProgress").style.display = 'block';
 				document.getElementById("downBtn").style.visibility = 'visible';
 			}
-
 		}
 	</script>
 </body>
