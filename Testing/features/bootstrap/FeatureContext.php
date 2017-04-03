@@ -63,5 +63,12 @@ class FeatureContext extends MinkContext implements Context
         return $this->getSession()->getPage()->find('css','input.outline-color') === 'rgb(128,0,128)';
     }
 
+    /**
+     * @Then I should check size of :arg1
+     */
+    public function iShouldCheckSizeOf($arg1)
+    {
+        throw new PendingException();
+    }
 
 }

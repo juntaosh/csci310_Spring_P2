@@ -8,30 +8,31 @@ Feature: homepage
 	@javascript
 	Scenario: Load word cloud at local host
 	Given I am on homepage
-	And I should see "Word Cloud"
-	Then I should not see "Search"
+	And I should see "WordCloud"
+	And I should see "Search"
+	Then I should not see "Download Word Cloud"
 
 	@javascript
 	Scenario: Word cloud loaded and should give feed back after search
 	Given I am on homepage
-	And I should see "Word Cloud"
-	And I fill in "???" for "paperSearch"
+	And I should see "WordCloud"
+	And I fill in "???" for "artistSearch"
 	And I press "Search"
 	And I should see a "canvas" element
-	Then I should see "Search"
+	Then I should see "Download Word Cloud"
 
 	@javascript
 	Scenario: Search is usable
 	Given I am on homepage
-	And I fill in "???" for "paperSearch"
-	When I fill in "???" for "paperSearch"
+	And I fill in "???" for "artistSearch"
+	When I fill in "???" for "artistSearch"
 	And I press "Search"
 	Then I should see a "canvas" element
 
 	@javascript
 	Scenario: number of pages searched is configurable
 	Given I am on homepage
-	And I fill in "???" for "numSearch"
+	And I fill in "???" for "numberofpaper"
 	And I press "Search"
 	Then I should see "Word Cloud"
 	When I press "Word"
