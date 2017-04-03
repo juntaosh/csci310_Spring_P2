@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <link href="index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="./css/jq.css" type="text/css" media="print, projection, screen" />
+<link rel="stylesheet" href="./css/blue/style.css" type="text/css" id="" media="print, projection, screen" />
+
+<script type="text/javascript" src="./jquery-latest.js"></script> 
+<script type="text/javascript" src="./jquery.tablesorter.js"></script>
+<script type="text/javascript" src="./list.js"></script>
+
 <head>
 <meta charset="utf-8">
 <title>Paper List</title>
@@ -12,6 +19,7 @@
 	</div>
 	<div id="main">
 	<table id="myTable">
+	<thead>
 	  <tr>
 		<th></th>
 		<th>Title</th>
@@ -20,6 +28,8 @@
 		<th>Conference</th>
 		<th>Download Link</th>
 	  </tr>
+	</thead>
+	<tbody id = "myTableBody">
 	  <tr>
 		<td><input type="checkbox" id="Bike"></td>
 		<td>Jill</td>
@@ -28,6 +38,7 @@
 		<td>50</td>
 		<td>50</td>
 	  </tr>
+	</tbody>
 	</table> 
 	</div>
 </div>
