@@ -114,6 +114,22 @@ input[type=text]:focus {
     display: table-cell;
     vertical-align: middle;
 }
+
+.exportBtn{
+    width: 190px;
+    height: 28px;
+    border: 0;
+    margin-right:20px;
+	font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(#4d004d,#800080);
+    color: white;
+    font-size: 15px;
+    font-weight:bold;
+    border-radius: 5px;
+    float:right;
+    display: table-cell;
+    vertical-align: middle;
+}
 .downloadBtn{
     width: 120px;
     height: 40px;
@@ -131,7 +147,7 @@ input[type=text]:focus {
 }
 
 table, th, td {
-   	border: 1px solid black;
+   	border: none;;
 	margin:0,auto;
 	text-align:left;
 }
@@ -140,5 +156,10 @@ table th {
 	color: #800080;
     font-size: 15px;
 	font-weight:bold;
+	margin-bottom:20px;
+}
+table{
+	padding-bottom:40px;
+	padding-top:25px;
 }
 
