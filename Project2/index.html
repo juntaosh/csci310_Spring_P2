@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<head>
+    <title>Word Cloud</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js"></script>
+	<script src="./src/wordcloud2.js"></script>
+	<script src="./src/index.js"></script>
+	<script src="./src/search.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body>
+	<div id="container">
+
+   	<section id="main">
+    		<h1>WordCloud</h1>
+    	</section>
+
+	<section id="search">
+    		<div class="ui-widget">
+		    	<label>Key Word</label><input id="searchWord" >
+				<br>
+			<label>Number of Paper</label><input id="numberofpaper">
+		</div>
+			<br>
+			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search()">Search</button>
+		</section>
+
+		<div id="myProgress">
+  			<div id="myBar"></div>
+		</div>
+
+		<section id = "form">
+			<canvas id = "mycanvas" class = "canvas" width="1024" height="1024"></canvas>
+		</section>
+
+
+		<div id = "search">
+			<button class="downloadBtn"id="downBtn">Download Word Cloud</button>
+		</div>
+
+		
+
+		
+
+	</div>
+	<script>
+		window.onload = function(){
+			hideButton(true);
+		}
+	</script>
+	<script>
+		function hideButton(hidden){
+			if(hidden){
+				document.getElementById("myBar").style.display = 'none';
+				document.getElementById("myProgress").style.display = 'none';
+				document.getElementById("downBtn").style.visibility = 'hidden';
+			}
+			else{
+				document.getElementById("searchbtn").style.visibility = 'hidden';
+				document.getElementById("myBar").style.display = 'block';
+				document.getElementById("myProgress").style.display = 'block';
+				document.getElementById("downBtn").style.visibility = 'visible';
+			}
+		}
+	</script>
+</body>
+
+
+</html>
