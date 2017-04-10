@@ -47,7 +47,7 @@ class Author {
 			$this->infoMap2[$doi] = $pdf_and_conference;
 			$link = $pdf_and_conference["pdf"];
 			$link = 'http://dl.acm.org/'.$link;
-			$path = './tmp/test'.$index.'.pdf';
+			$path = '../tmp/test'.$index.'.pdf';
 			$index++;
 			downloadFile($path, $link);
 			$this->doiToLoc[$doi] = $path;
@@ -82,6 +82,7 @@ class Author {
 			$title = $item['title'];
 			$authorNames = $author[0]['given'] . " ";
 			$authorNames = $authorNames . $author[0]['family'];
+			
 			if (count($author)>1){
 				foreach ($author as $number => $name){
 					if ($number !== 0){

@@ -18,6 +18,7 @@
 		$doiToText[$key] = $str;
 		//array_push($doiToText, [$key=>$str]);
 	}
+	
 	$interVar = array();
 	$wordToDOI = array();
 	foreach($doiToText as $doi => $text){
@@ -37,7 +38,6 @@
 	$var = array();
 
 	$metaData = $tmp->getMetaData();
-
 	foreach($interVar as $word => $frequency){
 		$tempMeta = array();
 		foreach($wordToDOI[$word] as $index => $doi){
@@ -49,7 +49,7 @@
 		}
 		array_push($var,array('word'=>$word, 'count'=> $frequency, 'articles'=> $tempMeta));
 	}
-
+	
 	/*foreach($var as $number=>$data){
 		echo $data['word'];
 		echo "<br />";
