@@ -1,4 +1,5 @@
 var returndata= [];
+var returnProgress=0;
 // search
 function search(){
 	var searchword = document.getElementById("searchWord").value;
@@ -34,6 +35,33 @@ function search(){
 		}
 	});
 
+}
+
+function progress(){
+	var currValue = 0;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url:'./src/progress.php',
+		async:false,
+		success: function(returned){
+			console.log("success");
+			console.log(returned);
+			returnProgress = returned;
+		},
+		error: function(){
+			console.log("ERROR");
+		}
+	});
+	currValue = returnProgress;
+	document.getElementById("myBar").max = document.getElementById("numberofpaper").value;
+	console.log("stuff");
+	console.log(currValue);
+	document.getElementById("myBar").value = currValue;
+	if (currValue >= document.getElementById("myBar").max){
+		return
+	}
+	setTimeout(progress,500);
 }
 
 function storage(word){

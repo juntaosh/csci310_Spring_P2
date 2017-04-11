@@ -51,6 +51,14 @@ class Author {
 			$index++;
 			downloadFile($path, $link);
 			$this->doiToLoc[$doi] = $path;
+			$file_handle = fopen("../tmp/progress.md", "r");
+			$line = fgets($file_handle);
+			fclose($file_handle);
+			$line = $line+0.7;
+
+			$file_handle = fopen("../tmp/progress.md", "w");
+			fwrite($file_handle,$line);
+			fclose($file_handle);
 
 		}
 		return $this->doiToLoc;
@@ -93,6 +101,14 @@ class Author {
 				}
 			}
 			$this->infoMap1[$var] = array('title'=>$title[0],'author'=>$authorNames);
+			$file_handle = fopen("../tmp/progress.md", "r");
+			$line = fgets($file_handle);
+			fclose($file_handle);
+			$line = $line+0.1;
+
+			$file_handle = fopen("../tmp/progress.md", "w");
+			fwrite($file_handle,$line);
+			fclose($file_handle);
 		}
 	}
 

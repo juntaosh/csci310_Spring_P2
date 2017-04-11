@@ -36,6 +36,10 @@ function search(){
 
 }
 
+function progress(){
+	var currentProgress = document.getElementById()
+}
+
 function storage(word){
 	console.log(returndata);
 	for(var i = 0; i < returndata.length; i++){

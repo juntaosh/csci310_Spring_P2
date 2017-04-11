@@ -25,11 +25,11 @@
 			<label>Number of Paper</label><input id="numberofpaper">
 		</div>
 			<br>
-			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search()">Search</button>
+			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search(); progress()">Search</button>
 		</section>
 
 		<div id="myProgress">
-  			<div id="myBar"></div>
+  			<progress id="myBar"value="60"max="100"></progress>
 		</div>
 
 		<section id = "form">
@@ -40,11 +40,6 @@
 		<div id = "search">
 			<button class="downloadBtn"id="downBtn">Download Word Cloud</button>
 		</div>
-
-		
-
-		
-
 	</div>
 	<script>
 		window.onload = function(){

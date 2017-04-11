@@ -78,9 +78,10 @@ label{
 	margin: 0 auto;
 }
 #myBar {
-    width: 1%;
+    width: 100%;
     height: 20px;
     background-color: #800080;
+    color: white;
 }
 .input[type=text]{
     width: 300px;

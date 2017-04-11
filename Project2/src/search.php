@@ -7,6 +7,10 @@
 	$word = $_POST['word'];
 	$paperNumber = $_POST['number'];
 	//echo "called";
+	$file_handle = fopen("../tmp/progress.md", "w");
+	fwrite($file_handle,"0");
+	fclose($file_handle);
+
 	$tmp = new Author($word,$paperNumber);
 	$tmp->getACMResponse();
 	$doiToLoc = $tmp->getACMPDF();
@@ -33,6 +37,14 @@
 				$wordToDOI[$freqMap['word']] = array($doi);
 			}
 		}
+		$file_handle = fopen("../tmp/progress.md", "r");
+		$line = fgets($file_handle);
+		fclose($file_handle);
+		$line = $line+0.2;
+
+		$file_handle = fopen("../tmp/progress.md", "w");
+		fwrite($file_handle,$line);
+		fclose($file_handle);
 	}
 
 	$var = array();
