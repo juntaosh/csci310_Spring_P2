@@ -59,7 +59,6 @@ class Author {
 			$file_handle = fopen("../tmp/progress.md", "w");
 			fwrite($file_handle,$line);
 			fclose($file_handle);
-
 		}
 		return $this->doiToLoc;
 	}
@@ -67,12 +66,14 @@ class Author {
 	public function getMetaData(){
 		$metaData = array();
 		foreach($this->doiarray as $article=>$doi){
+			$bibtexlink = "dl.acm.org/exportformats.cfm?id=".$doi."&expformat=bibtex";
 			$metaData[$article] = array(
 				"DOI"=>$doi,
 				"Title"=> $this->infoMap1[$doi]['title'],
 				"Author"=>$this->infoMap1[$doi]['author'],
 				"Conference"=>$this->infoMap2[$doi]['conference'],
-				"Link"=>$this->doiToLoc[$doi]
+				"Link"=>$this->doiToLoc[$doi],
+				"Bibtex"=>$bibtexlink
 			);
 		}
 		return $metaData;

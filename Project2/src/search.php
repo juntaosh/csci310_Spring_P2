@@ -45,6 +45,7 @@
 		$file_handle = fopen("../tmp/progress.md", "w");
 		fwrite($file_handle,$line);
 		fclose($file_handle);
+	
 	}
 
 	$var = array();

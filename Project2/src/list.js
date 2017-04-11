@@ -38,11 +38,12 @@ function generateTable(data, word){
         Author.textContent = Articles[i].Author;
         tr.appendChild(Author);
         
+        console.log(Articles[i].Link);
         var Frequency = document.createElement('td');
         $.ajax({
         type: 'POST',
         dataType: 'json',
-        url:'wordFrequency.php',
+        url:'./src/wordFrequency.php',
         async:false,
         data:{
             word: word,

@@ -106,8 +106,8 @@ jQuery(function($) {
 			this.href = url;
 		} else {
 			evt.preventDefault();
-		alert('Please right click and choose "Save As..." to save the generated image.');
-		window.open(url, '_blank', 'width=500,height=300,menubar=yes');
+			alert('Please right click and choose "Save As..." to save the generated image.');
+			window.open(url, '_blank', 'width=500,height=300,menubar=yes');
 		}
 	});
 

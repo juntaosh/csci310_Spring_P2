@@ -99,3 +99,17 @@ function generateWordCloud(wordlist){
 	};
 	WordCloud(document.getElementById('mycanvas'), options);
 }
+
+jQuery(function($) {
+	$('#downBtn').on('click', function save(evt) {
+		var $canvas = document.getElementById('mycanvas');
+		var url = $canvas.toDataURL();
+		if ('download' in document.createElement('a')) {
+			this.href = url;
+		} else {
+			evt.preventDefault();
+			alert('Please right click and choose "Save As..." to save the generated image.');
+			window.open(url, '_blank', 'width=500,height=300,menubar=yes');
+		}
+	});
+});
