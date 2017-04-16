@@ -1,4 +1,5 @@
 var returndata= [];
+var returnProgress=0;
 // search
 function search(){
 	var searchword = document.getElementById("searchWord").value;
@@ -6,7 +7,7 @@ function search(){
 	$.ajax({
 		type: 'POST',
 		dataType: 'json',
-		url:'search.php',
+		url:'./src/search.php',
 		data:{
 			word: searchword,
 			number: paperNumber
@@ -37,7 +38,30 @@ function search(){
 }
 
 function progress(){
-	var currentProgress = document.getElementById()
+	var currValue = 0;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url:'./src/progress.php',
+		async:false,
+		success: function(returned){
+			console.log("success");
+			console.log(returned);
+			returnProgress = returned;
+		},
+		error: function(){
+			console.log("ERROR");
+		}
+	});
+	currValue = returnProgress;
+	document.getElementById("myBar").max = document.getElementById("numberofpaper").value;
+	console.log("stuff");
+	console.log(currValue);
+	document.getElementById("myBar").value = currValue;
+	if (currValue >= document.getElementById("myBar").max){
+		return
+	}
+	setTimeout(progress,500);
 }
 
 function storage(word){
@@ -75,3 +99,17 @@ function generateWordCloud(wordlist){
 	};
 	WordCloud(document.getElementById('mycanvas'), options);
 }
+
+jQuery(function($) {
+	$('#downBtn').on('click', function save(evt) {
+		var $canvas = document.getElementById('mycanvas');
+		var url = $canvas.toDataURL();
+		if ('download' in document.createElement('a')) {
+			this.href = url;
+		} else {
+			evt.preventDefault();
+			alert('Please right click and choose "Save As..." to save the generated image.');
+			window.open(url, '_blank', 'width=500,height=300,menubar=yes');
+		}
+	});
+});

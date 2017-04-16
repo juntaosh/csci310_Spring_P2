@@ -11,7 +11,7 @@ $(document).ready(function() {
     var tmp = JSON.parse(worddata);
     console.log(tmp);
     generateTable(tmp, word);
-    $("table").tablesorter();
+    $("table").tablesorter({sortlist: [[3,1]]});
 });
 
 // data structure: DOI Title Author Conference Link
@@ -38,11 +38,12 @@ function generateTable(data, word){
         Author.textContent = Articles[i].Author;
         tr.appendChild(Author);
         
+        console.log(Articles[i].Link);
         var Frequency = document.createElement('td');
         $.ajax({
         type: 'POST',
         dataType: 'json',
-        url:'wordFrequency.php',
+        url:'./src/wordFrequency.php',
         async:false,
         data:{
             word: word,
@@ -61,14 +62,20 @@ function generateTable(data, word){
         tr.appendChild(Frequency);
 
         var Conference = document.createElement('td');
-        Conference.textContent = Articles[i].Conference;
+        var b = document.createElement('a');
+        b.textContent = Articles[i].Conference;
+        var addr = "conferencelist.html?" + Articles[i].ConferenceLink + "&title=" + Articles[i].Conference;
+        console.log(addr);
+        b.setAttribute("href", addr);
+        Conference.appendChild(b);
         tr.appendChild(Conference);
         
         var Path = document.createElement('td');
         var a = document.createElement('a');
         a.textContent = "PDF";
-        var address = "http://dl.acm.org/" + Articles[i].Link;
+        var address = Articles[i].Link;
         a.setAttribute("href", address);
+        a.setAttribute("download", Articles[i].Title);
         Path.appendChild(a);
         tr.appendChild(Path);
         

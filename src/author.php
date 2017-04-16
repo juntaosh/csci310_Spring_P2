@@ -43,43 +43,38 @@ class Author {
 			# Use the Curl extension to query crossref and get back a page of results
 			$url = "http://dl.acm.org/citation.cfm?doid=".$doi;
 			$url = $url."&preflayout=flat";
-			//$url = "https://login.libproxy2.usc.edu/login?url=http://dl.acm.org/citation.cfm?doid=".$doi;
 			$pdf_and_conference = getPDFLinkFromHTML($url);
 			$this->infoMap2[$doi] = $pdf_and_conference;
 			$link = $pdf_and_conference["pdf"];
 			$link = 'http://dl.acm.org/'.$link;
-			$path = './tmp/test'.$index.'.pdf';
+			$path = '../tmp/test'.$index.'.pdf';
 			$index++;
-			//$infoMap2[$doi]["pdf"]
-			//$this->P2T($link);
 			downloadFile($path, $link);
-			//echo "success";
-			//echo "<br />";
-			//echo $pdf_and_conference["conference"];
-			//echo "<br />";
 			$this->doiToLoc[$doi] = $path;
+			$file_handle = fopen("../tmp/progress.md", "r");
+			$line = fgets($file_handle);
+			fclose($file_handle);
+			$line = $line+0.7;
 
+			$file_handle = fopen("../tmp/progress.md", "w");
+			fwrite($file_handle,$line);
+			fclose($file_handle);
 		}
 		return $this->doiToLoc;
-	}
-
-	// Pdf To Text function
-	public function P2T($addr){
-		$text = new PDF2Text();
-		$text->setFilename($addr);
-		$text->decodePDF();
-		return $text->output();
 	}
 
 	public function getMetaData(){
 		$metaData = array();
 		foreach($this->doiarray as $article=>$doi){
+			$bibtexlink = "dl.acm.org/exportformats.cfm?id=".$doi."&expformat=bibtex";
 			$metaData[$article] = array(
 				"DOI"=>$doi,
 				"Title"=> $this->infoMap1[$doi]['title'],
 				"Author"=>$this->infoMap1[$doi]['author'],
 				"Conference"=>$this->infoMap2[$doi]['conference'],
-				"Link"=>$this->infoMap2[$doi]['pdf']
+				"ConferenceLink"=>$this->infoMap2[$doi]['conferencelink'],
+				"Link"=>$this->doiToLoc[$doi],
+				"Bibtex"=>$bibtexlink
 			);
 		}
 		return $metaData;
@@ -97,6 +92,7 @@ class Author {
 			$title = $item['title'];
 			$authorNames = $author[0]['given'] . " ";
 			$authorNames = $authorNames . $author[0]['family'];
+			
 			if (count($author)>1){
 				foreach ($author as $number => $name){
 					if ($number !== 0){
@@ -107,7 +103,19 @@ class Author {
 				}
 			}
 			$this->infoMap1[$var] = array('title'=>$title[0],'author'=>$authorNames);
+			$file_handle = fopen("../tmp/progress.md", "r");
+			$line = fgets($file_handle);
+			fclose($file_handle);
+			$line = $line+0.1;
+
+			$file_handle = fopen("../tmp/progress.md", "w");
+			fwrite($file_handle,$line);
+			fclose($file_handle);
 		}
 	}
+
+	public function getInfoMap1(){return $this->infoMap1;}
+	public function getInfoMap2(){return $this->infoMap2;}
+	public function getInfoMap3(){return $this->infoMap3;}
 }
 ?>

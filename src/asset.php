@@ -9,7 +9,9 @@ function getPDFLinkNConf($url){
 	$result = getPDFLinkFromHTML($url);
 	return $result;
 }
+
 function getPDFLinkFromHTML($url){
+	$isCited = false;
 	$ch = curl_init();
 	$timeout = 5;
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -51,6 +53,10 @@ function getPDFLinkFromHTML($url){
 	   			$breakCnt = 0;
 	   			break;
 	   		}
+	   	}
+	   	else if(strpos($href,'citation.cfm?') !== false && !$isCited){
+	   		$result["conferencelink"] = substr($href,13);
+	   		$isCited = true;
 	   	}
 	}
 	return $result;
