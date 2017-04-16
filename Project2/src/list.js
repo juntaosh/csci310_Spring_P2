@@ -62,7 +62,12 @@ function generateTable(data, word){
         tr.appendChild(Frequency);
 
         var Conference = document.createElement('td');
-        Conference.textContent = Articles[i].Conference;
+        var b = document.createElement('a');
+        b.textContent = Articles[i].Conference;
+        var addr = "conferencelist.html?" + Articles[i].ConferenceLink + "&title=" + Articles[i].Conference;
+        console.log(addr);
+        b.setAttribute("href", addr);
+        Conference.appendChild(b);
         tr.appendChild(Conference);
         
         var Path = document.createElement('td');

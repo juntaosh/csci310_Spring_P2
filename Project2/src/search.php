@@ -6,6 +6,8 @@
 	// Get word from client side javascript
 	$word = $_POST['word'];
 	$paperNumber = $_POST['number'];
+	//$word = "charlie";
+	//$paperNumber = 2;
 	//echo "called";
 	$file_handle = fopen("../tmp/progress.md", "w");
 	fwrite($file_handle,"0");
@@ -62,18 +64,20 @@
 		}
 		array_push($var,array('word'=>$word, 'count'=> $frequency, 'articles'=> $tempMeta));
 	}
-	
-	/*foreach($var as $number=>$data){
+	/*
+	foreach($var as $number=>$data){
 		echo $data['word'];
 		echo "<br />";
 		echo $data['count'];
 		echo "<br />";
 		echo $data['articles'][0]["Title"];
 		echo "<br />";
+		echo $data['articles'][0]["ConferenceLink"];
+		echo "<br />";
 		echo "<br />";
 
-	}*/
-
+	}
+*/
 	echo json_encode($var);
 	// Use Map[DOI => $path] | pdf.jar=>parse | frequencySort($text) => Map[$word => $frequency]
 

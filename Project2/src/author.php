@@ -72,6 +72,7 @@ class Author {
 				"Title"=> $this->infoMap1[$doi]['title'],
 				"Author"=>$this->infoMap1[$doi]['author'],
 				"Conference"=>$this->infoMap2[$doi]['conference'],
+				"ConferenceLink"=>$this->infoMap2[$doi]['conferencelink'],
 				"Link"=>$this->doiToLoc[$doi],
 				"Bibtex"=>$bibtexlink
 			);
