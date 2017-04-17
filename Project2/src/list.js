@@ -13,7 +13,22 @@ $(document).ready(function() {
     var tmp = JSON.parse(worddata);
     console.log(tmp);
     generateTable(tmp, word);
+
     $("table").tablesorter({sortlist: [[3,1]]});
+    $("#pdfBtn").click(function(e){
+        $('#myTable').tableExport({type:'pdf',
+                           jspdf: {orientation: 'l',
+                                   format: 'a3',
+                                   margins: {left:10, right:10, top:20, bottom:20},
+                                   autotable: {styles: {fillColor: 'inherit', 
+                                                        textColor: 'inherit'},
+                                               tableWidth: 'auto'}
+                                  }
+                           });
+    });
+    $("#textBtn").click(function(e){
+        $('#myTable').tableExport({type:'txt',});
+    });
 });
 
 // data structure: DOI Title Author Conference Link

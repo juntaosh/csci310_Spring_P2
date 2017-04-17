@@ -4,9 +4,21 @@
 <link rel="stylesheet" href="./css/jq.css" type="text/css" media="print, projection, screen" />
 <link rel="stylesheet" href="./css/blue/style.css" type="text/css" id="" media="print, projection, screen" />
 
-<script type="text/javascript" src="./src/jquery-latest.js"></script> 
+<!-- <script type="text/javascript" src="./src/jquery-latest.js"></script>  -->
+ <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="./src/jquery.tablesorter.js"></script>
+<!-- <script type="text/javascript" src="./src/jspdf/tableExport.js"></script>
+<script type="text/javascript" src="./src/jspdf/jquery.base64.js"></script>
+<script type="text/javascript" src="./src/jspdf/jspdf.js"></script>
+<script type="text/javascript" src="./src/jspdf/libs/sprintf.js"></script>
+<script type="text/javascript" src="./src/jspdf/libs/base64.js"></script> -->
+<script type="text/javascript" src="./src/jspdf/FileSaver.min.js"></script>
+<script type="text/javascript" src="./src/jspdf/jspdf.min.js"></script>
+<script type="text/javascript" src="./src/jspdf/jspdf.plugin.autotable.js"></script>
+<script type="text/javascript" src="./src/jspdf/tableExport.min.js"></script>
 <script type="text/javascript" src="./src/list.js"></script>
+
+
 
 <head>
 <meta charset="utf-8">
@@ -33,7 +45,8 @@
 
 		</tbody>
 		</table>
-		<button class="exportBtn"id="exporBtn">Export List</button>
+		<button class="exportBtn"id="pdfBtn">Export List as pdf</button>
+		<button class="exportBtn"id="textBtn">Export List as txt</button>
 		<button class="exportBtn"id="generateBtn">Regenerate Cloud</button>
 	</div>
 </div>
