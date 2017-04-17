@@ -59,6 +59,25 @@
 				}
 			});
 			hideButton(true);
+
+			var sPageURL = window.location.search.substring(1);
+			sPageURL = sPageURL.replace("#love","");
+			var items = sPageURL.split("&");
+    		var authorName = items[0].split("=")[1];
+    		authorName = authorName.replace("%20"," ");
+    		authorName = authorName.replace("%20"," ");
+    		authorName = authorName.replace("%20"," ");
+    		authorName = authorName.replace("%20"," ");
+    		authorName = authorName.replace("%20"," ");
+    		authorName = authorName.trim();
+    		var papers = items[1].split("=")[1];
+			document.getElementById("searchWord").value = authorName;
+			document.getElementById("numberofpaper").value = papers;
+			if (authorName != ''){
+				hideButton(false);
+				search();
+				progress();
+			}
 		}
 	</script>
 	<script>

@@ -95,7 +95,7 @@ function generateWordCloud(wordlist){
 	options.click=function(item, dimension, event){
 		console.log(item[0]);
 		storage(item[0]);
-		window.open("list_page.html?word="+item[0]);
+		window.open("list_page.html?word="+item[0]+"&papers="+document.getElementById("numberofpaper").value);
 	};
 	WordCloud(document.getElementById('mycanvas'), options);
 }

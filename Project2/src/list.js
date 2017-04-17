@@ -1,9 +1,11 @@
 var frequencyReturn=0;
+var numpapers = 0;
 $(document).ready(function() {
     var data = location.search;
     data = data.replace('?', '');
     var items = data.split("&");
     var word = items[0].split("=")[1];
+    numpapers = items[1].split("=")[1];
     console.log(word);
     document.getElementById('word').innerHTML = word.toUpperCase();
 
@@ -35,7 +37,14 @@ function generateTable(data, word){
         tr.appendChild(Title);
 
         var Author = document.createElement('td');
-        Author.textContent = Articles[i].Author;
+        var c = document.createElement('a');
+        c.textContent = Articles[i].Author;
+        var outURL = "index.html?author=";
+        outURL+=Articles[i].Author;
+        outURL+="&paper=";
+        outURL+=numpapers;
+        c.setAttribute("href",outURL);
+        Author.appendChild(c);
         tr.appendChild(Author);
         
         console.log(Articles[i].Link);
