@@ -6,12 +6,10 @@ $(document).ready(function() {
     var items = data.split("&");
     var word = items[0].split("=")[1];
     numpapers = items[1].split("=")[1];
-    console.log(word);
     document.getElementById('word').innerHTML = word.toUpperCase();
 
     var worddata = localStorage.getItem('wordData');
     var tmp = JSON.parse(worddata);
-    console.log(tmp);
     generateTable(tmp, word);
 
     $("table").tablesorter({sortlist: [[3,1]]});
@@ -34,7 +32,6 @@ $(document).ready(function() {
 // data structure: DOI Title Author Conference Link
 function generateTable(data, word){
     var tbody = document.getElementById("myTableBody");
-    console.log(data.articles);
     var Articles = data.articles;
     frequencyReturn = 0;
     for(var i = 0; i < Articles.length; i++){
@@ -82,7 +79,6 @@ function generateTable(data, word){
         });
 
         Frequency.textContent = frequencyReturn;
-        console.log(Frequency.textContent);
         tr.appendChild(Frequency);
 
         var Conference = document.createElement('td');

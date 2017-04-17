@@ -46,8 +46,7 @@ function progress(){
 		url:'./src/progress.php',
 		async:false,
 		success: function(returned){
-			console.log("success");
-			console.log(returned);
+			console.log("update status bar");
 			returnProgress = returned;
 		},
 		error: function(){
@@ -56,8 +55,6 @@ function progress(){
 	});
 	currValue = returnProgress;
 	document.getElementById("myBar").max = document.getElementById("numberofpaper").value;
-	console.log("stuff");
-	console.log(currValue);
 	document.getElementById("myBar").value = currValue;
 	if (currValue >= document.getElementById("myBar").max){
 		return

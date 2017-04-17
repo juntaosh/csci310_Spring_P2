@@ -7,9 +7,6 @@
 	$word = $_POST['word'];
 	$paperNumber = $_POST['number'];
 	$isAuthor = $_POST['filter'];
-	//$word = "charlie";
-	//$paperNumber = 2;
-	//echo "called";
 	$file_handle = fopen("../tmp/progress.md", "w");
 	fwrite($file_handle,"0");
 	fclose($file_handle);
@@ -18,12 +15,10 @@
 	$tmp->getACMResponse();
 	$doiToLoc = $tmp->getACMPDF();
 	
-	//$doiToLoc = array("1111"=>"./tmp/test0.pdf");
 	$doiToText = array();
 	foreach($doiToLoc as $key => $value){
 		$str = readPDF($value);
 		$doiToText[$key] = $str;
-		//array_push($doiToText, [$key=>$str]);
 	}
 	
 	$interVar = array();
@@ -65,21 +60,7 @@
 		}
 		array_push($var,array('word'=>$word, 'count'=> $frequency, 'articles'=> $tempMeta));
 	}
-	/*
-	foreach($var as $number=>$data){
-		echo $data['word'];
-		echo "<br />";
-		echo $data['count'];
-		echo "<br />";
-		echo $data['articles'][0]["Title"];
-		echo "<br />";
-		echo $data['articles'][0]["ConferenceLink"];
-		echo "<br />";
-		echo "<br />";
 
-	}
-*/
 	echo json_encode($var);
-	// Use Map[DOI => $path] | pdf.jar=>parse | frequencySort($text) => Map[$word => $frequency]
 
 ?>

@@ -35,12 +35,9 @@ function getPDFLinkFromHTML($url){
 	foreach($dom->getElementsByTagName('a') as $link) {
 		$name = $link->getAttribute('name');
 		$href = $link->getAttribute('href');
-		//echo $href;
-		//echo "<br />";
 		if($name ==	"FullTextPDF"){
 	 		$result["pdf"] = $href;
 	 		$breakCnt = $breakCnt+1;
-	 		//echo $address;
 		   	if ($breakCnt == 2){
 		   		$breakCnt = 0;
 		   		break;
