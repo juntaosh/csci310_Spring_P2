@@ -10,6 +10,21 @@ Feature: Agile2:Searching features:
 	professors names(14).
 
 	@javascript
+	Scenario: searched word shall be highlighted in the abstract
+	Given I am on homepage
+	And I fill in "lifan" for "searchWord"
+	And I fill in "2" for "numberofpaper"
+	Then I press "Search"
+	And I wait until page loaded
+	Then I click an "product" on the canvas
+	And I navigate to the new page with "product"
+	Then I wait "3"
+	And I click on the first title displayed
+	Then I wait "3"
+	Then I should see "product" highlighted
+
+
+	@javascript
 	Scenario: download image after wordCloud appeared (13)
 	Given I am on homepage
 	And I fill in "charlie" for "searchWord"

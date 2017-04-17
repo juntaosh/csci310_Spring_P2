@@ -97,7 +97,7 @@ class FeatureContext extends MinkContext implements Context
      */
     public function iWaitUntilPageLoaded()
     {
-        $this->getSession()->wait(15000);
+        $this->getSession()->wait(18000);
     }
 
 
@@ -315,6 +315,46 @@ class FeatureContext extends MinkContext implements Context
             throw new Exception("Unable to locate canvas");
         }
         $myCanvas -> click();
+    }
+
+    /**
+     * @Then I navigate to the new page with :arg1
+     */
+    public function iNavigateToTheNewPageWith($arg1)
+    {
+        $web = '/list_page.html?word=product&papers=2';
+        $this->visitPath($web);
+    }
+
+    /**
+     * @Then I should see :arg1 highlighted
+     */
+    public function iShouldSeeHighlighted($arg1)
+    {
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named', array('content', $arg1));
+        if(empty($element)){
+            $error = arg1 + 'not found';
+            throw new Exception($error );
+        }
+        $attributes = $element->getHtml();
+        if(!$attributes =='gold'){
+            throw Exception("color incorrect");
+        }
+    }
+
+    /**
+     * @Then I click on the first title displayed
+     */
+    public function iClickOnTheFirstTitleDisplayed()
+    {
+        $title = "Retrieval of Relevant Opinion Sentences for New Products";
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('content',$title));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
     }
 
 }
