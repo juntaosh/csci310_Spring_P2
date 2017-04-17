@@ -6,6 +6,7 @@
 	// Get word from client side javascript
 	$word = $_POST['word'];
 	$paperNumber = $_POST['number'];
+	$isAuthor = $_POST['filter'];
 	//$word = "charlie";
 	//$paperNumber = 2;
 	//echo "called";
@@ -13,7 +14,7 @@
 	fwrite($file_handle,"0");
 	fclose($file_handle);
 
-	$tmp = new Author($word,$paperNumber);
+	$tmp = new Author($word,$paperNumber,$isAuthor);
 	$tmp->getACMResponse();
 	$doiToLoc = $tmp->getACMPDF();
 	

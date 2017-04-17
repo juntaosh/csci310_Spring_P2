@@ -25,7 +25,7 @@
 			<label>Number of Paper</label><input id="numberofpaper">
 		</div>
 			<br>
-			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search(); progress()">Search</button>
+			<button class="searchBtn"id="searchbtn"onclick="hideButton(false); search(false); progress()">Search</button>
 		</section>
 
 		<div id="myProgress">
@@ -64,19 +64,21 @@
 			sPageURL = sPageURL.replace("#love","");
 			var items = sPageURL.split("&");
     		var authorName = items[0].split("=")[1];
-    		authorName = authorName.replace("%20"," ");
-    		authorName = authorName.replace("%20"," ");
-    		authorName = authorName.replace("%20"," ");
-    		authorName = authorName.replace("%20"," ");
-    		authorName = authorName.replace("%20"," ");
-    		authorName = authorName.trim();
-    		var papers = items[1].split("=")[1];
-			document.getElementById("searchWord").value = authorName;
-			document.getElementById("numberofpaper").value = papers;
-			if (authorName != ''){
-				hideButton(false);
-				search();
-				progress();
+    		if (typeof authorName != 'undefined'){
+	    		authorName = authorName.replace("%20"," ");
+	    		authorName = authorName.replace("%20"," ");
+	    		authorName = authorName.replace("%20"," ");
+	    		authorName = authorName.replace("%20"," ");
+	    		authorName = authorName.replace("%20"," ");
+	    		authorName = authorName.trim();
+	    		var papers = items[1].split("=")[1];
+				document.getElementById("searchWord").value = authorName;
+				document.getElementById("numberofpaper").value = papers;
+				if (authorName != ''){
+					hideButton(false);
+					search(true);
+					progress();
+				}
 			}
 		}
 	</script>

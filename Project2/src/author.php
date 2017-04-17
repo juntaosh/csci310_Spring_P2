@@ -22,7 +22,7 @@ class Author {
 	// doi to localpath
 	private $doiToLoc = array();
 
-	function __construct($name,$paperNumber) {
+	function __construct($name,$paperNumber,$isAuthor) {
 		$this->client = new Client([
 		    'base_url' => ['http://api.crossref.org/'],
 		    'defaults' => [
@@ -31,7 +31,12 @@ class Author {
 		]);
 		$requestStr = 'http://api.crossref.org/works?filter=member:320&rows=';
 		$requestStr = $requestStr . $paperNumber;
-		$requestStr = $requestStr . '&query=';
+		if (!$isAuthor){
+			$requestStr = $requestStr . '&query=';
+		}
+		else{
+			$requestStr = $requestStr . '&query.author=';
+		}
 		$requestStr = $requestStr . $name;
 		$this->ACMresponse = $this->client->request('GET', $requestStr);
 	}

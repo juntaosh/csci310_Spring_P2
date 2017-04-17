@@ -1,7 +1,7 @@
 var returndata= [];
 var returnProgress=0;
 // search
-function search(){
+function search(isAuthor){
 	var searchword = document.getElementById("searchWord").value;
 	var paperNumber = document.getElementById("numberofpaper").value;
 	$.ajax({
@@ -10,7 +10,8 @@ function search(){
 		url:'./src/search.php',
 		data:{
 			word: searchword,
-			number: paperNumber
+			number: paperNumber,
+			filter: isAuthor
 		},
 		success: function(returned){
 			console.log("success");
