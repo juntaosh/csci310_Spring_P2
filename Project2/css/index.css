@@ -83,6 +83,9 @@ label{
     background-color: #800080;
     color: white;
 }
+#myBar::-webkit-progress-value {background: purple; }
+#myBar::-webkit-progress-bar {background: LightGray; }
+
 .input[type=text]{
     width: 300px;
     -webkit-transition: width 0.4s ease-in-out;
