@@ -1,8 +1,9 @@
 <?php
-	require 'author.php';
+	require 'searchObj.php';
 	require './vendor/autoload.php';
 	require 'pdfReader.php';
 	require 'frequencySort.php';
+
 	// Get word from client side javascript
 	$word = $_POST['word'];
 	$paperNumber = $_POST['number'];
@@ -11,9 +12,9 @@
 	fwrite($file_handle,"0");
 	fclose($file_handle);
 
-	$tmp = new Author($word,$paperNumber,$isAuthor);
-	$tmp->getACMResponse();
-	$doiToLoc = $tmp->getACMPDF();
+	$tmp = new SearchObj($word,$paperNumber,$isAuthor);
+	$tmp->getDatabaseResponse();
+	$doiToLoc = $tmp->getPDF();
 	
 	$doiToText = array();
 	foreach($doiToLoc as $key => $value){

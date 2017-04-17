@@ -10,10 +10,9 @@ use Doctrine\Common\Cache\FilesystemCache;
 error_reporting(E_ALL);
 
 
-class Author {
+class SearchObj {
 	private $client;
-	public $AMCresponse;
-	public $IEEEresponse;
+	public $response;
 	public $doiarray = array();
 	// infoMap1 is the map whose key is DOI and ['title', 'author']
 	private $infoMap1 = array();
@@ -38,11 +37,10 @@ class Author {
 			$requestStr = $requestStr . '&query.author=';
 		}
 		$requestStr = $requestStr . $name;
-		$this->ACMresponse = $this->client->request('GET', $requestStr);
+		$this->response = $this->client->request('GET', $requestStr);
 	}
 
-	public function getACMPDF(){
-		//getACMResponse();
+	public function getPDF(){
 		$index = 0;
 		foreach($this->doiarray as $doi){
 			# Use the Curl extension to query crossref and get back a page of results
@@ -85,8 +83,8 @@ class Author {
 		return $metaData;
 	}
 
-	public function getACMResponse(){
-		$data = $this->ACMresponse->getBody();
+	public function getDatabaseResponse(){
+		$data = $this->response->getBody();
 		$data = json_decode($data, true);
 		$data = $data['message']['items'];
 		foreach($data as $key=>$item){
