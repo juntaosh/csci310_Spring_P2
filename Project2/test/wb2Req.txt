@@ -1,0 +1,22 @@
+searchTest.php => 
+	Requirement 1
+	Requirement 2
+	Requirement 3
+
+frequencySortTest.php =>
+	Requriement 5 a)
+
+authorTest.php =>
+	Requirement 1
+	Requirement 2
+	Requirement 3
+	Requirement 4 b) c)
+	Requirement 7
+
+assetTest.php =>
+	Requirement 7
+	Requirement 5 b)
+	Requirement 2
+
+wordFrequencyTest.php =>
+	Requirement 5 c)

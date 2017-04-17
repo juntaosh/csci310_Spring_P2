@@ -69,7 +69,8 @@ class SearchObj {
 	public function getMetaData(){
 		$metaData = array();
 		foreach($this->doiarray as $article=>$doi){
-			$bibtexlink = "dl.acm.org/exportformats.cfm?id=".$doi."&expformat=bibtex";
+			$bib = explode(".", $doi);
+			$bibtexlink = "http://dl.acm.org/exportformats.cfm?id=".$bib[1]."&expformat=bibtex";
 			$metaData[$article] = array(
 				"DOI"=>$doi,
 				"Title"=> $this->infoMap1[$doi]['title'],
@@ -77,7 +78,8 @@ class SearchObj {
 				"Conference"=>$this->infoMap2[$doi]['conference'],
 				"ConferenceLink"=>$this->infoMap2[$doi]['conferencelink'],
 				"Link"=>$this->doiToLoc[$doi],
-				"Bibtex"=>$bibtexlink
+				"Bibtex"=>$bibtexlink,
+				"Abs"=>$this->infoMap2[$doi]['abstract']
 			);
 		}
 		return $metaData;

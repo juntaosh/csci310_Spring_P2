@@ -51,6 +51,21 @@ function getPDFLinkFromHTML($url){
 	   		$isCited = true;
 	   	}
 	}
+	// get Abstract
+	$abstract = "";
+	$abstractDiv;
+	foreach($dom->getElementsByTagName('div') as $link){
+		$class = $link->getAttribute("class");
+		if($class == "flatbody"){
+			$abstractDiv = $link;
+			break;
+		}
+	}
+	foreach($abstractDiv->childNodes as $p){
+		$abstract = $abstract.$p->textContent;
+	}
+	$result["abstract"] = $abstract;
+	
 	return $result;
 }
 ?>
