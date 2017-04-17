@@ -1,5 +1,5 @@
 <?php
-	$url = $_POST['link'];
+	//$url = $_POST['link'];
 	//$url = "http://dl.acm.org/citation.cfm?id=".$url."&preflayout=flat";
 	function getConferenceList($url){
 		$ch = curl_init();
@@ -36,8 +36,9 @@
 				}
 			}
 		}
+		return $result;
 	}
-	$result = getConferenceList($url);
+	//$result = getConferenceList($url);
 	//print_r($result);
-	echo json_encode($result);
+	//echo json_encode($result);
 ?>

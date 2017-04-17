@@ -1,0 +1,12 @@
+
+
+Code Coverage Report:    
+  2017-04-17 02:47:46    
+                         
+ Summary:                
+  Classes:  0.00% (0/1)  
+  Methods: 75.00% (3/4)  
+  Lines:   84.42% (65/77)
+
+SearchObj
+  Methods:  75.00% ( 3/ 4)   Lines:  92.86% ( 65/ 70)
