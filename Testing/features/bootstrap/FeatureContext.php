@@ -71,8 +71,8 @@ class FeatureContext extends MinkContext implements Context
      */
     public function iPressInWordcloud($arg1)
     {
-        $url = "list_page.html?word=students";
-        $this->visitPath($url);
+        $element = $this->getSession()->getPage()->find('xpath','students');
+        $element->click();
     }
 
     /**
@@ -90,6 +90,231 @@ class FeatureContext extends MinkContext implements Context
     public function iPressTitle($arg1)
     {
         $this->assertSession()->pageTextContains($this->fixStepArgument($arg1));
+    }
+
+    /**
+     * @Then I wait until page loaded
+     */
+    public function iWaitUntilPageLoaded()
+    {
+        $this->getSession()->wait(15000);
+    }
+
+
+    /**
+     * @Then I click the :arg1 element
+     */
+    public function iClickTheElement($arg1)
+    {
+        $page = $this->getSession()->getPage();
+        $element = $page->find('css', $arg1);
+        if(empty($element)){
+            throw new Exception("No html found");
+        }
+        $element->click();
+    }
+
+        /**
+     * @Given I should see a sempty bar
+     */
+    public function iShouldSeeASemptyBar()
+    {
+        $mybar = $this->getSession()->getPage()->find('css','#myBar');
+        if(empty($mybar)){
+            throw new Exception("cannot find mybar");
+        }
+        if($mybar->getValue() != '0'){
+            throw new Exception("Value incorrect");
+        }
+    }
+
+    /**
+     * @Then I shuld see a full bar
+     */
+    public function iShuldSeeAFullBar()
+    {
+        $mybar = $this->getSession()->getPage()->find('css','#myBar');
+        if(!$mybar){
+            throw new Exception("cannot find mybar");
+        }
+        if($mybar->getValue() != '2'){
+            throw new Exception("Value incorrect");
+        }
+    }
+    /**
+     * @Then I click an :arg1 on the canvas
+     */
+    public function iClickAnOnTheCanvas($arg1)
+    {
+        $myCanvas = $this->getSession()->getPage()->find('css','#form canvas');
+        if(empty($myCanvas)){
+            throw new Exception("Unable to locate canvas");
+        }
+        $myCanvas -> click();
+    }
+    /**
+     * @Then I navigate to the new page
+     */
+    public function iNavigateToTheNewPage()
+    {
+        $web = '/list_page.html?word=security&papers=2';
+        $this->visitPath($web);
+    }
+
+     /**
+     * @Then I click on the first author
+     */
+    public function iClickOnTheFirstAuthor()
+    {
+        $author = $this->getSession() -> getPage()->find('named', array('link_or_button', 'Charlie Kaufman'));
+        if(empty($author)){
+            throw new Exception("author not found");
+        }
+        $author -> click();
+    }
+
+    public function iShouldSeeWordCloudSearchedWithThatAuthor()
+    {
+        $this->assertSession()->pageTextContains($this->fixStepArgument('wordcloud'));
+    }
+
+    /**
+     * @Then I should see word cloud searched with that author
+     */
+    public function iShouldSeeWordCloudSearchedWithThatAuthor2()
+    {
+         $this->assertSession()->pageTextContains($this->fixStepArgument('wordcloud'));
+    }
+    /**
+     * @Then I click on the first pdf
+     */
+    public function iClickOnTheFirstPdf()
+    {
+        $pdf = $this->getSession() -> getPage()->find('named', array('link_or_button', 'PDF'));
+        if(empty($pdf)){
+            throw new Exception("author not found");
+        }
+
+       // $profile = new FirefoxProfile();
+       // $profile->setPreference("browser.download.dir","../../../Downloads");
+       // $profile->setPreference("browser.helperApps.neverAsk.saveToDisk","application/pdf");
+       // $profile->setPreference("pdfjs.disabled",true);
+       // $profile->setPreference("browser.download.folderList",2);
+       // $profile->setPreference("browser.download.panel.shown",false);
+
+       // $capabilities = DesiredCapabilities.firefox();
+       // $capabilities.setCapability(FirefoxDriver.PROFILE);
+
+
+        $pdf -> click();
+    }
+
+    /**
+     * @Then I click yes for download
+     */
+    public function iClickYesForDownload()
+    {
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('link_or_button','OK'));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
+    }
+
+
+    /**
+     * @Then I should see pdf downloaded
+     */
+    public function iShouldSeePdfDownloaded()
+    {
+        $filename = "What's different about security in a public cloud-.pdf";
+        if(!file_exists('../../../Downloads/' . $filename)){
+            throw new Exception("pdf file not found");
+        }   
+    }
+
+    /**
+     * @Then I should see image downloaded
+     */
+    public function iShouldSeeImageDownloaded()
+    {
+        $filename = 'wordcloud.png';
+        if(!file_exists('../../../Downloads/' . $filename)){
+            throw new Exception("image file not found");
+        }
+    }
+
+/**
+     * @Given I click on the title displayed
+     */
+    public function iClickOnTheTitleDisplayed()
+    {
+        $title = "What's different about security in a public cloud?";
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('content',$title));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
+    }
+
+    /**
+     * @Then I click on the bibtex
+     */
+    public function iClickOnTheBibtex()
+    {
+        $bibtex = 'Bibtex';
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('link_or_button',$bibtex));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
+    }
+
+    /**
+     * @Then I should see the bitex displayed of that title
+     */
+    public function iShouldSeeTheBitexDisplayedOfThatTitle()
+    {
+        $publisher = 'ACM';
+        $this->assertSession()->pageTextContains($this->fixStepArgument($publisher));
+    }
+
+    /**
+     * @Given I click on the conference title
+     */
+    public function iClickOnTheConferenceTitle()
+    {
+        $conference = 'Computer and Communications Security';
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('link_or_button',$conference));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
+    }
+
+    /**
+     * @Then I should see titles of the articles in that conference
+     */
+    public function iShouldSeeTitlesOfTheArticlesInThatConference()
+    {
+        $other_articles = 'Clouds and their discontents';
+        $this->assertSession()->pageTextContains($this->fixStepArgument($other_articles));
+    }
+
+    /**
+     * @Then I should see wordcloud and can interact with it
+     */
+    public function iShouldSeeWordcloudAndCanInteractWithIt()
+    {
+        $myCanvas = $this->getSession()->getPage()->find('css','#form canvas');
+        if(empty($myCanvas)){
+            throw new Exception("Unable to locate canvas");
+        }
+        $myCanvas -> click();
     }
 
 }

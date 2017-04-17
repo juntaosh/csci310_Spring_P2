@@ -37,6 +37,7 @@ Feature: homepage
 	And I press "Search"
 	Then I should see "Word Cloud"
 	Then I wait "20"
+	Then I should see "students"
 	When I press "students" in wordCloud
 	Then I wait "15"
 	Then I should see "39" 
