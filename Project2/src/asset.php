@@ -5,11 +5,6 @@ function downloadFile($path, $url){
 	file_put_contents($path, fopen($url, 'r'));
 }
 
-function getPDFLinkNConf($url){
-	$result = getPDFLinkFromHTML($url);
-	return $result;
-}
-
 function getPDFLinkFromHTML($url){
 	$isCited = false;
 	$ch = curl_init();
