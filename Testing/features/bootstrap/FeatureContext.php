@@ -97,7 +97,7 @@ class FeatureContext extends MinkContext implements Context
      */
     public function iWaitUntilPageLoaded()
     {
-        $this->getSession()->wait(18000);
+        $this->getSession()->wait(25000);
     }
 
 
@@ -355,6 +355,69 @@ class FeatureContext extends MinkContext implements Context
             throw new Exception("cannot click");
         }
         $element->click();
+    }
+
+    /**
+     * @Given I click the :arg1 button
+     */
+    public function iClickTheButton($arg1)
+    {
+        $button = $this->getSession()->getPage()->find('named',array('link_or_button',$arg1));
+        if(empty($button)){
+            throw new Exception("button not found Exception");
+        }
+        $button->click();
+    }
+
+    /**
+     * @Then I should see :arg1 downloaded
+     */
+    public function iShouldSeeDownloaded($arg1)
+    {
+        $filename = $arg1;
+        if(!file_exists('../../../Downloads/' . $filename)){
+            throw new Exception("downloaded file not found");
+        } 
+    }
+
+    /**
+     * @Given I navigate to the cloud page
+     */
+    public function iNavigateToTheCloudPage()
+    {
+        $web = '/';
+        $this->visitPath($web);
+    }
+
+    /**
+     * @Then I should see :arg1 and :arg2
+     */
+    public function iShouldSeeAnd($arg1, $arg2)
+    {
+        //still need implementations
+        throw new PendingException();
+    }
+
+    /**
+     * @Given I selet the first paper
+     */
+    public function iSeletTheFirstPaper()
+    {
+        //need to ask Lifan define its names for testing
+        $selections = $this->getSession()->getPage()->find('named',array('checkbox',''));
+        if(empty($selections)){
+            throw new Exception("select space not found on this page");
+        }
+        $selections->check();
+    }
+
+    /**
+     * @Then I should see search results of :arg1
+     */
+    public function iShouldSeeSearchResultsOf($arg1)
+    {
+        //still need implementations
+        throw new PendingException();
     }
 
 }
