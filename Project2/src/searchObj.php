@@ -121,5 +121,6 @@ class SearchObj {
 
 	public function getInfoMap1(){return $this->infoMap1;}
 	public function getInfoMap2(){return $this->infoMap2;}
+	public function getInfoMap3(){return $this->infoMap3;}
 }
 ?>

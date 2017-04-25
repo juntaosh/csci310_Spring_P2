@@ -2,8 +2,8 @@
 declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 
-require '../src/searchObj.php';
-require '../src/vendor/autoload.php';
+require 'author.php';
+require 'vendor/autoload.php';
 //require 'asset.php';
 
 final class authorTest extends TestCase
@@ -60,4 +60,3 @@ final class authorTest extends TestCase
     	$this->assertContains("Computer", $metaData[0]['Conference']);
     }
 }
-?>

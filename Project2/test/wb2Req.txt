@@ -20,18 +20,3 @@ assetTest.php =>
 
 wordFrequencyTest.php =>
 	Requirement 5 c)
-
-|----------------------------------------------------------------|
-
-refactor
-searchObjTest.php(previously authorTest.php) =>
-	Requirement 1
-	Requirement 2
-	Requirement 3
-	Requirement 4 b) c)
-	Requirement 7
-	(Add feature)
-	Requirement 14
-
-conferencelistTest.php =>
-	Requirement 15

@@ -1,7 +1,7 @@
 <phpunit>
 <filter>
 <whitelist processUncoveredFilesFromWhiteList="true">
-	<file>conferencelistForTest.php</file>
+	<file>author.php</file>
 </whitelist>
 </filter>
 </phpunit>
