@@ -273,9 +273,14 @@ function regenerate(){
             }
         }
     }
-    console.log(chosen);
-    var jsonObj = JSON.stringify(chosen);
-    localStorage.setItem('regenerate', jsonObj);
-    window.close();
-    window.open("regenerate.html");
+    if(chosen.length>0){
+        console.log(chosen);
+        var jsonObj = JSON.stringify(chosen);
+        localStorage.setItem('regenerate', jsonObj);
+        window.close();
+        window.open("regenerate.html");
+    }
+    else{
+        window.alert("Plesae select the checkbox");
+    }
 }
