@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/history.css" type="text/css" />
 <head>
     <title>Word Cloud</title>
 	<meta charset="utf-8">
@@ -9,18 +10,80 @@
 	<script src="./src/wordcloud2.js"></script>
 	<script src="./src/index.js"></script>
 	<script src="./src/search.js"></script>
+	<script src="./src/history.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<style type="text/css">
+	body{
+		background-image:url('../../images/heading3.gif');
+		background-repeat:no-repeat;
+		padding-top:85px;	
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+		font-size:0.9em;
+		line-height:130%;
+
+	}
+	
+	
+	.selectBoxArrow{
+		margin-top:1px;
+		float:left;
+		position:absolute;
+		right:1px;
+		
+
+	}	
+	.selectBoxInput{
+		border:0px;
+		padding-left:1px;
+		height:16px;
+		position:absolute;
+		top:0px;
+		left:0px;
+	}
+
+	.selectBox{
+		border:1px solid #7f9db9;
+		height:20px;
+		left:230px;	
+	
+	}
+	.selectBoxOptionContainer{
+		position:absolute;
+		border:1px solid #7f9db9;
+		height:100px;
+		background-color:#FFF;
+		left:-1px;
+		top:20px;
+		visibility:hidden;
+		overflow:auto;
+	}
+	.selectBoxAnOption{
+		font-family:arial;
+		font-size:12px;
+		cursor:default;
+		margin:1px;
+		overflow:hidden;
+		white-space:nowrap;
+	}
+	.selectBoxIframe{
+		position:absolute;
+		background-color:#FFF;
+		border:0px;
+		z-index:999;
+	}	
+	</style>
 </head>
+
 <body>
 	<div id="container">
 
-   	<section id="main">
+   		<section id="main">
     		<h1>WordCloud</h1>
     	</section>
 
-	<section id="search">
+		<section id="search">
     		<div class="ui-widget">
-		    	<label>Key Word</label><input id="searchWord" >
+		    	<label>Key Word</label><input id="searchWord" name="myText" value="" selectBoxOptions="" >
 				<br>
 			<label>Number of Paper</label><input id="numberofpaper">
 		</div>
@@ -41,14 +104,10 @@
 			<a class="downloadBtn"id="downBtn" href="#" download="wordcloud.png" title="Save Canvas">Download Word Cloud</a>
 		</div>
 
-		
-
-		
-
 	</div>
 	<script>
 		window.onload = function(){
-			
+			history();
 			$.ajax({
 				type: 'POST',
 				url:'./src/writeToFile.php',
@@ -95,6 +154,37 @@
 				document.getElementById("myProgress").style.display = 'block';
 				document.getElementById("downBtn").style.visibility = 'visible';
 			}
+		}
+	</script>
+	<script>
+		var historyArray = [];
+		function history(){
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url:'./src/history.php',
+				async:false,
+				success: function(returned){
+					console.log("update search history");
+					historyArray = returned;
+				},
+				error: function(){
+					console.log("ERROR");
+				}
+			});
+			
+			if (historyArray.length > 0){
+				var optionString = historyArray[0];
+				for (var i=1;i<historyArray.length;i++){
+					optionString = optionString + ";" + historyArray[i];
+				}
+			
+				document.getElementById("searchWord").setAttribute("selectBoxOptions",optionString);
+			}
+			else{
+				document.getElementById("searchWord").setAttribute("selectBoxOptions","");
+			}
+			createEditableSelect(document.getElementById("searchWord"));
 		}
 	</script>
 </body>

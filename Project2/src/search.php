@@ -12,6 +12,31 @@
 	fwrite($file_handle,"0");
 	fclose($file_handle);
 
+	$tempArr = array();
+
+	$file_handle = fopen("../tmp/history.md", "r");
+	$tempArr = json_decode(fgets($file_handle));
+	fclose($file_handle);
+
+	$insert = true;
+	foreach ($tempArr as $index => $words){
+		if ($words == $word){
+			$insert = false;
+			break;
+		}
+	}
+	if ($insert){
+		array_push($tempArr,$word);
+	}
+
+	if (count($tempArr) > 5){
+		array_splice($tempArr,0,1);
+	}
+
+	$file_handle = fopen("../tmp/history.md", "w");
+	fwrite($file_handle,json_encode($tempArr));
+	fclose($file_handle);
+
 	$tmp = new SearchObj($word,$paperNumber,$isAuthor);
 	$tmp->getDatabaseResponse();
 	$doiToLoc = $tmp->getPDF();
