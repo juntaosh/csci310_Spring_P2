@@ -44,6 +44,54 @@ body{
 	font-weight:bold;
 }
 
+.selectBoxArrow{
+    margin-top:1px;
+    float:left;
+    position:absolute;
+    right:1px;
+        
+
+}   
+.selectBoxInput{        
+    border:0px;
+    padding-left:1px;
+    height:16px;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+.selectBox{
+    border:1px solid #7f9db9;
+    height:20px;
+    left:230px; 
+    
+}
+.selectBoxOptionContainer{
+    position:absolute;
+    border:1px solid #7f9db9;
+    height:100px;
+    background-color:#FFF;
+    left:-1px;
+    top:20px;
+    visibility:hidden;
+    overflow:auto;
+}
+.selectBoxAnOption{
+    font-family:arial;
+    font-size:12px;
+    cursor:default;
+    margin:1px;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.selectBoxIframe{
+    position:absolute;
+    background-color:#FFF;
+    border:0px;
+    z-index:999;
+}
+
 label{
 	width:220px;
 	margin-right:10px;
@@ -62,7 +110,7 @@ label{
 }
 #search{
     width:700px;
-    height:80px;
+    height:150px;
     margin: 0 auto;
     margin-bottom:30px;
 	line-height:30px;
