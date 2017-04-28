@@ -440,5 +440,21 @@ class FeatureContext extends MinkContext implements Context
         }
         $pdf -> click();
     }
+    /**
+     * @Then :arg1 should be highlighted with :arg2
+     */
+    public function shouldBeHighlightedWith($arg1, $arg2)
+    {
+        $web = 'file:///home/student/Downloads/product.pdf';
+        $this->getSession()->visit($web);
+        $word = $this->getSession() -> getPage()->find('named', array('content', 'product'));
+        if(empty($word)){
+            throw new Exception('word not found in the pdf');
+        }
+        $color = $word->getHtml();
+        if(!$color =='gold'){
+            throw Exception("color incorrect");
+        }
+    }
 
 }

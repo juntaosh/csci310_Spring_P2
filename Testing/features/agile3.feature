@@ -71,4 +71,7 @@ Feature: Agile2:Searching features:
 	And I click on the first title displayed
 	Then I wait "3"
 	Then I pressed download highlight pdf
-	Then I should see "information.pdf" downloaded
+	Then I should see "product.pdf" downloaded
+	And I wait "5"
+	Then "product.pdf" should be highlighted with "product"
+	And I wait "5"
