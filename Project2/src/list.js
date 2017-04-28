@@ -1,9 +1,10 @@
 var frequencyReturn=0;
 var isExpanded = false;
 var ExpandedRow = -1;
-var Articles;
+var Articles = new Array();
 var index2Abstract = new Array();
 var index2Bibtex = new Array();
+var index2Link = new Array();
 var searchword;
 var numpapers = 0;
 
@@ -19,6 +20,7 @@ $(document).ready(function() {
 
     var worddata = localStorage.getItem('wordData');
     var tmp = JSON.parse(worddata);
+    console.log(tmp);
     generateTable(tmp, word);
     $("table").tablesorter({sortList: [[3,1]]});
 
@@ -35,6 +37,9 @@ $(document).ready(function() {
     });
     $("#textBtn").click(function(e){
         $('#myTable').tableExport({type:'txt',});
+    });
+    $('#generateBtn').click(function(){
+        regenerate();
     });
 });
 
@@ -115,6 +120,7 @@ function generateTable(data, word){
         tbody.appendChild(tr);
         index2Abstract.push(Articles[i].Abs);
         index2Bibtex.push(Articles[i].Bibtex);
+        index2Link.push(Articles[i].Link);
     }
 }
 
@@ -194,9 +200,38 @@ function extend(row, i){
 
     var Download = document.createElement('td');
     var b = document.createElement('a');
-    b.textContent = "PDF";
+    b.textContent = "H_PDF";
+    console.log("hpdf");
+    console.log(i);
+    b.onclick = function(){downloadHighlight(i)}
     Download.appendChild(b);
     row.appendChild(Download);
+}
+
+function downloadHighlight(i){
+    console.log(index2Link[i]);
+    console.log(searchword);
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url:'./src/pdfHighlighter.php',
+        async:false,
+        data:{
+            path: index2Link[i],
+            word: searchword
+        },
+        success: function(){
+            console.log("Highlighted");
+            var dl = document.createElement('a');
+            dl.setAttribute("href", "../tmp/output.pdf");
+            dl.setAttribute("download", searchword + ".pdf");
+            dl.click();
+        },
+        error: function(){
+            console.log("ERROR");
+        }
+    });
+
 }
 
 function disableHeader(){
@@ -215,4 +250,32 @@ function enableHeader(){
     document.getElementById('freq').setAttribute("data-sorter", true);
     document.getElementById('conf').setAttribute("data-sorter", true);
     document.getElementById('dld').setAttribute("data-sorter", true);
+}
+
+// loop through each td checkbox, if it is checked, put the corresponding Articles into chosen
+// And then store in local storage for later use
+// And then open up the regenerate window
+function regenerate(){
+    var worddata = localStorage.getItem('wordData');
+    var tmp = JSON.parse(worddata);
+    console.log(tmp);
+    var Articles = tmp.articles;
+    var td = document.getElementsByTagName('input');
+    var chosen = Array();
+    for(var i = 0; i < td.length; i++){
+        if(td[i].getAttribute("type") == "checkbox"){
+            if(td[i].checked){
+                for(var j = 0; j < Articles.length; j++){
+                    if(td[i].id == Articles[j].DOI){
+                        chosen.push(Articles[j]);
+                    }
+                }
+            }
+        }
+    }
+    console.log(chosen);
+    var jsonObj = JSON.stringify(chosen);
+    localStorage.setItem('regenerate', jsonObj);
+    window.close();
+    window.open("regenerate.html");
 }
