@@ -417,7 +417,28 @@ class FeatureContext extends MinkContext implements Context
     public function iShouldSeeSearchResultsOf($arg1)
     {
         //still need implementations
-        throw new PendingException();
+        $this->assertSession()->pageTextContains($this->fixStepArgument('wordcloud'));
+    }
+
+    /**
+     * @Then I select the first paper and click regenerate
+     */
+    public function iSelectTheFirstPaperAndClickRegenerate()
+    {
+        $web = '/regenerate.html#love';
+        $this->visitPath($web);
+    }
+
+    /**
+     * @Then I pressed download highlight pdf
+     */
+    public function iPressedDownloadHighlightPdf()
+    {
+        $pdf = $this->getSession() -> getPage()->find('named', array('content', 'H_PDF'));
+        if(empty($pdf)){
+            throw new Exception("author not found");
+        }
+        $pdf -> click();
     }
 
 }

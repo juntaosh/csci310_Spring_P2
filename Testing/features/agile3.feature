@@ -15,6 +15,7 @@ Feature: Agile2:Searching features:
 	Given I am on homepage
 	And I fill in "charlie" for "searchWord"
 	And I fill in "2" for "numberofpaper"
+	Then I wait "3"
 	Then I press "Search"
 	And I wait until page loaded
 	Then I click an "secruity" on the canvas
@@ -27,7 +28,7 @@ Feature: Agile2:Searching features:
 	Then I should see "tableExport.pdf" downloaded
 
 	@javascript
-	Scenario: searched results should be albe to see in the
+	Scenario: searched results should be able to see in the
 	cloud page(11)
 	Given I am on homepage
 	And I fill in "charlie" for "searchWord"
@@ -38,7 +39,9 @@ Feature: Agile2:Searching features:
 	Then I navigate to the new page
 	Given I navigate to the cloud page
 	And I wait "5"
-	Then I should see "charlie" and "2"
+	Then I click the "searchWord" input box
+	And I wait "5"
+	Then I should see "charlie"
 
 	@javascript
 	Scenario: generate new word cloud with selected papers(12)
@@ -49,12 +52,13 @@ Feature: Agile2:Searching features:
 	And I wait until page loaded
 	Then I click an "secruity" on the canvas
 	Then I navigate to the new page
-	And I selet the first paper
-	Then I wait "10"
-	# Then I should see search results of "What's different about security in a public cloud?"
+	Then I wait "5"
+	And I select the first paper and click regenerate
+	Then I wait "5"
+	Then I should see search results of "What's different about security in a public cloud?"
 
 	@javascript
-	Scenario: download highlighted pdf when abstract is pressed
+	Scenario: download highlighted pdf when abstract is pressed (15)
 	Given I am on homepage
 	And I fill in "lifan" for "searchWord"
 	And I fill in "2" for "numberofpaper"
@@ -66,4 +70,5 @@ Feature: Agile2:Searching features:
 	Then I wait "3"
 	And I click on the first title displayed
 	Then I wait "3"
-	Then I should see "xxx.pdf" downloaded
+	Then I pressed download highlight pdf
+	Then I should see "information.pdf" downloaded
