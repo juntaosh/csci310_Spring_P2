@@ -194,18 +194,6 @@ class FeatureContext extends MinkContext implements Context
         if(empty($pdf)){
             throw new Exception("author not found");
         }
-
-       // $profile = new FirefoxProfile();
-       // $profile->setPreference("browser.download.dir","../../../Downloads");
-       // $profile->setPreference("browser.helperApps.neverAsk.saveToDisk","application/pdf");
-       // $profile->setPreference("pdfjs.disabled",true);
-       // $profile->setPreference("browser.download.folderList",2);
-       // $profile->setPreference("browser.download.panel.shown",false);
-
-       // $capabilities = DesiredCapabilities.firefox();
-       // $capabilities.setCapability(FirefoxDriver.PROFILE);
-
-
         $pdf -> click();
     }
 
@@ -370,17 +358,6 @@ class FeatureContext extends MinkContext implements Context
     }
 
     /**
-     * @Then I should see :arg1 downloaded
-     */
-    public function iShouldSeeDownloaded($arg1)
-    {
-        $filename = $arg1;
-        if(!file_exists('../../../Downloads/' . $filename)){
-            throw new Exception("downloaded file not found");
-        } 
-    }
-
-    /**
      * @Given I navigate to the cloud page
      */
     public function iNavigateToTheCloudPage()
@@ -454,6 +431,61 @@ class FeatureContext extends MinkContext implements Context
         $color = $word->getHtml();
         if(!$color =='gold'){
             throw Exception("color incorrect");
+        }
+    }
+
+        /**
+     * @Then I click the :arg1 input box
+     */
+    public function iClickTheInputBox($arg1)
+    {
+        $selection = $this->getSession()->getPage()->find('css','.selectBoxArrow');
+        if(empty($selection)){
+            throw new Exception("Unable to locate canvas");
+        }
+        $selection -> click();
+    }
+
+   /**
+     * @Then pressing :arg1 will not sort as intended
+     */
+    public function pressingWillNotSortAsIntended($arg1)
+    {
+        $sort = $this->getSession()->getPage()->find('named', array('content',$arg1));
+        $location0 = $this->getSession()->getPage()->find('named', array('content','Lifan Guo'));
+        if(empty($location0)){
+            throw new Exception("unable to find the first author");
+        }
+        $location1 = $this->getSession()->getPage()->find('named', array('content','Yang Zhang'));
+        if(empty($location1)){
+            throw new Exception("unable to find the second author");
+        }
+    }
+
+    /**
+     * @Then I click on the conference unknown
+     */
+    public function iClickOnTheConferenceUnknown()
+    {
+        $conference = 'conference unknown';
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('link_or_button',$conference));
+        if (empty($element)){
+            throw new Exception("cannot click");
+        }
+        $element->click();
+    }
+
+    /**
+     * @Then I should see tile as conference title meaning default
+     */
+    public function iShouldSeeTileAsConferenceTitleMeaningDefault()
+    {
+        $conference = 'Conference Title';
+        $page = $this->getSession()->getPage();
+        $element = $page->find('named',array('content',$conference));
+        if (empty($element)){
+            throw new Exception("cannot click");
         }
     }
 
