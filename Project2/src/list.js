@@ -137,8 +137,12 @@ function click(element){
         table.deleteRow(ExpandedRow);
         isExpanded = false;
         ExpandedRow = -1;
-        // TODO enable the sort function
-        enableHeader();
+        document.getElementById('check').setAttribute("data-sorter", true);
+	   	document.getElementById('title').setAttribute("data-sorter", true);
+		document.getElementById('author').setAttribute("data-sorter", true);
+		document.getElementById('freq').setAttribute("data-sorter", true);
+		document.getElementById('conf').setAttribute("data-sorter", true);
+		document.getElementById('dld').setAttribute("data-sorter", true);
     } else if(isExpanded && index != ExpandedRow){// if click on the other item while opening =>open the index one then close the previous one
         if(index < ExpandedRow-1){
             table.deleteRow(ExpandedRow);
@@ -153,8 +157,11 @@ function click(element){
             isExpanded = true;
             ExpandedRow = index;
         }
-        // TODO disable the sort function
-        disableHeader();
+        document.getElementById('title').setAttribute("data-sorter", false);
+    	document.getElementById('author').setAttribute("data-sorter", false);
+    	document.getElementById('freq').setAttribute("data-sorter", false);
+    	document.getElementById('conf').setAttribute("data-sorter", false);
+    	document.getElementById('dld').setAttribute("data-sorter", false);
     } else {
         console.log("start");
         var row = table.insertRow(index+1);
@@ -163,7 +170,8 @@ function click(element){
         isExpanded = true;
         console.log(ExpandedRow);
         console.log(table.rows.length);
-        disableHeader();
+        document.getElementById('check').setAttribute("data-sorter", false);
+    
     }
 }
 
@@ -232,24 +240,6 @@ function downloadHighlight(i){
         }
     });
 
-}
-
-function disableHeader(){
-    document.getElementById('check').setAttribute("data-sorter", false);
-    document.getElementById('title').setAttribute("data-sorter", false);
-    document.getElementById('author').setAttribute("data-sorter", false);
-    document.getElementById('freq').setAttribute("data-sorter", false);
-    document.getElementById('conf').setAttribute("data-sorter", false);
-    document.getElementById('dld').setAttribute("data-sorter", false);
-}
-
-function enableHeader(){
-    document.getElementById('check').setAttribute("data-sorter", true);
-    document.getElementById('title').setAttribute("data-sorter", true);
-    document.getElementById('author').setAttribute("data-sorter", true);
-    document.getElementById('freq').setAttribute("data-sorter", true);
-    document.getElementById('conf').setAttribute("data-sorter", true);
-    document.getElementById('dld').setAttribute("data-sorter", true);
 }
 
 // loop through each td checkbox, if it is checked, put the corresponding Articles into chosen
